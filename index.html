@@ -1,84 +1,327 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>Cognitive Services</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/dotnetconf.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-background-image="images/purplesky.png" data-background-repeat="repeat" data-background-size="20%">
-					<div class="content-banner">
-						<div style="float: left;">
-							<h2>Introduzione ai <br>Cognitive Services</h2>							
-							<div style="padding-top: 20%;">
-							<p>Dante Ciambella</p>
-							<p>Stefano Semeria</p>
-							</div>
-						</div>						
-						<div style="float: left; ">
-							<img style="background: none; border: none; box-shadow: none; width: 550px; padding-top: 35%;" src="images/cog-logo.png"/>
-						</div>
-						<div style="float: left; ">
-							<img style="background: none; border: none; box-shadow: none; width: 350px;" src="images/cognitive-services.png"/>
-						</div>
-					</div>
-				
-				</section>
-				<section data-background-image="images/purplesky.png" data-background-repeat="repeat" data-background-size="20%">
-				    <div class="content-banner">
-						<h2>Agenda</h2>
-						<ol>
-							<li class="fragment">Cosa sono i Microsoft Cognitive Services</li>
-							<li class="fragment">Categorie di servizi</li>
-							<li class="fragment">Casi d'uso concreti</li>
-							<li class="fragment">Costo e modalit&agrave; di utilizzo</li>
-							<li class="fragment"></li>
-							<li class="fragment ">test</li>
-						</ol>
-					</div>
-				</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    
+    <!-- Compiled and minified CSS for Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link rel="stylesheet" href="css/theme/dotnetconf.css" />
 
-		<script src="js/reveal.js"></script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+ 
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!--BANNER-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <div style="float: left;">
+              <h2>Introduzione ai <br />Cognitive Services</h2>
+              <div style="padding-top: 20%;">
+                <p>Dante Ciambella</p>
+                <p>Stefano Semeria</p>
+              </div>
+            </div>
+            <div style="float: left; ">
+              <img
+                style="background: none; border: none; box-shadow: none; width: 550px; padding-top: 35%;"
+                src="images/cog-logo.png"
+              />
+            </div>
+            <div style="float: left; ">
+              <img
+                style="background: none; border: none; box-shadow: none; width: 350px;"
+                src="images/cognitive-services.png"
+              />
+            </div>
+          </div>
+        </section>
+        <!--AGENDA-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Agenda</h2>
+            <ol>
+              <li class="fragment">
+                Cosa sono i Microsoft Cognitive Services?
+              </li>
+              <li class="fragment">Categorie di servizi</li>
+              <li class="fragment">Casi d'uso</li>
+              <li class="fragment">Costi e modalit&agrave; di utilizzo</li>
+              <li class="fragment">
+                I Servizi: panoramica ed esempi
+                <ul style="font-size: 30px;">
+                  <li class="fragment">Vision Services</li>
+                  <li class="fragment">Language Services</li>
+                  <li class="fragment">Speech Services</li>
+                  <li class="fragment">Decision Services</li>
+                  <li class="fragment">Search Services</li>
+                </ul>
+              </li>
+              <li class="fragment">Link utili</li>
+              <li class="fragment">Q&A - Domande e Risposte</li>
+            </ol>
+          </div>
+        </section>
+        <!--COSA SONO-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Cosa sono i Microsoft Cognitive Services?</h2>
+          </div>
+        </section>
+        <!--LE CATEGORIE-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Categorie di servizi</h2>
+          </div>
+        </section>
+        <!--CASI D'USO-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Casi d'uso</h2>
+          </div>
+        </section>
+        <!--COSTI E MODALITA'-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Costi e modalit&agrave; di utilizzo</h2>
+          </div>
+        </section>
+        <!--VISION SERVICES-->
+        <!--VISION SERVICES: COMPUTER VISION-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+          data-state="analyze_image_demo"
+        >
+        <section>
+        <div class="content-banner">
+          <h2>Vision Service: Computer Vision</h2>
+          <p class="fragment">
+            Comprende un set di API che consentono l'elaborazione avanzata di immagini e l'estrazioni di metadati ed informazioni
+            dalle stesse.
+          </p>
+          <p class="fragment">
+            Ad esempio permettono di:
+            <ol>
+              <li class="fragment">Riconoscere oggetti contenuti in immagini.</li>
+              <li class="fragment">Estrarre blocchi di testo da immagini.</li>
+              <li class="fragment">Rilevare volti in un immagine.</li>
+              <li class="fragment">Classificare/taggare un immagine in base al contenuto in modo automatico.</li>
+            </ol>
+          </p>
+        </section>
+        <section data-state="demo-analisi-immagine">   
+            <div class="content-banner">
+            <h2>DEMO: Analisi di un'immagine</h2>
+           
+            <div class="row">
+              <div class="col tabheader s12">
+                <ul class="tabs blue-text">
+                  <li class="tab col s4"><a class="active" href="#div-url">Analisi da Url</a></li>
+                  <li class="tab col s4"><a href="#div-file">Analisi da File</a></li>
+                  <li class="tab col s4"><a href="#div-camera">Analisi da Webcam</a></li>
+                </ul>
+              </div>
+              <div id="div-url" class="col tabcontent s12">Url</div>
+              <div id="dv-file" class="col tabcontent s12">File</div>
+              <div id="div-camera" class="col tabcontent s12">Camera</div>
+            </div>
+       </section>
+          <section>Vertical Slide 2</section>
+           
+          </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				width: "100%",
-				height: "100%",
-				margin: 0,
-				minScale: 1,
-				maxScale: 1,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+        </section>
+       
+        <!--LANGUAGE SERVICES-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Language Services</h2>
+          </div>
+        </section>
+        <!--SPEECH SERVICES-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Speech Services</h2>
+          </div>
+        </section>
+        <!--DECISION SERVICES-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Decision Services</h2>
+          </div>
+        </section>
+        <!--SEARCH SERVICES-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Search Services</h2>
+          </div>
+        </section>
+        <!--LINK UTILI-->
+        <section
+        data-background-image="images/purplesky.png"
+        data-background-repeat="repeat"
+        data-background-size="20%"
+      >
+        <div class="content-banner" data-markdown>
+          <textarea data-template>
+            ## Link Utili
+        
+            * [Reveal.JS HTML Presentation Framework](https://revealjs.com/)
+            * [Azure Cognitive Services documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/)
+            * [Cognitive Services REST API Docs (West Europe)](https://westeurope.dev.cognitive.microsoft.com/docs/services)
+          </textarea>>         
+        </div>
+      </section>
+      <!--Q&A-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Q&A - Domande e Risposte</h2>
+            <div>
+              <img style="width: 30%; margin-right: 10%;" src="images/QA.jpg" />
+              <img src="images/QAndA.png" />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+  
+    <!-- Latest compiled and minified jquery -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <script src="js/cognitive-services.js"></script>
+
+
+    <!-- Compiled and minified JavaScript for materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+           
+   <script>
+	  const endpoint ="https://westeurope.api.cognitive.microsoft.com/";
+	  const subKey = "29f82d5f352e4bf8a4fbebfb30f7ec86";	
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        width: "100%",
+        height: "100%",
+        margin: 0,
+        minScale: 1,
+        maxScale: 1,
+        pdfSeparateFragments: false,
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          { src: "plugin/highlight/highlight.js", async: true }
+        ]
+      });
+
+      Reveal.addEventListener("demo-analisi-immagine", function() {
+       /*  $("#btn_analyze_image").off("click");
+        $("#btn_analyze_image").on("click", function() {
+
+              // Display the image.
+              var sourceImageUrl = document.getElementById("inputImage").value;
+              document.querySelector("#sourceImage").src = sourceImageUrl;
+      
+              // Called each time the slide with the "stats" state is made visible
+              const analyzer = new ImageAnalyzer(endpoint, subKey);
+              analyzer.processImage(sourceImageUrl, 
+                    function(data) {
+                    $("#json_view").text(JSON.stringify(data, null, 2));
+                    hljs.highlightBlock($("#json_view")[0]);
+
+                    },
+                    function(jqXHR, textStatus, errorThrown) {
+                    // Display error message.
+                    var errorString =
+                      errorThrown === ""
+                      ? "Error. "
+                      : errorThrown + " (" + jqXHR.status + "): ";
+                    errorString +=
+                      jqXHR.responseText === ""
+                      ? ""
+                      : jQuery.parseJSON(jqXHR.responseText).message;
+                    alert(errorString);
+                    }
+                  );
+            }); */
+            //init tabs
+            $('.tabs').tabs();
+      });
+    </script>
+  </body>
 </html>

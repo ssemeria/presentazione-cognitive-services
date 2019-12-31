@@ -14,6 +14,39 @@
   background-color: #511c74;
   display: inline-block; }
 
+.reveal ul.tabs {
+  margin: 0; }
+
+.reveal ul.tabs li {
+  margin: 0;
+  background-color: #f7d0ff; }
+
+.tabs .tab a {
+  color: #6b219c;
+  font-size: 20px; }
+
+/*Color to the text*/
+.tabs .tab a:hover {
+  background-color: #f7d0ff;
+  color: #6b219c; }
+
+/*Text color on hover*/
+.tabs .tab a.active, .tabs .tab a:focus.active {
+  background-color: #a22ac7;
+  color: #ffffff;
+  font-weight: bolder; }
+
+/*Background and text color when a tab is active*/
+.reveal ul.tabs li.indicator {
+  background-color: #6b219c; }
+
+/*Color of underline*/
+div.col.tabcontent {
+  background-color: #f7d0ff; }
+
+div.col.tabheader {
+  background-color: #f7d0ff; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
