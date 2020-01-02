@@ -47,6 +47,14 @@ div.col.tabcontent {
 div.col.tabheader {
   background-color: #f7d0ff; }
 
+.input-field > input {
+  font-size: 30px; }
+
+/* label color */
+.input-field > label {
+  color: #6b219c;
+  font-size: 20px; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/

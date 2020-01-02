@@ -12,14 +12,18 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/reveal.css" />
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/monokai.css" />
 
+
+    <!-- Materialize icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Compiled and minified CSS for Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
     <link rel="stylesheet" href="css/theme/dotnetconf.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -151,7 +155,7 @@
           </p>
           <p class="fragment">
             Ad esempio permettono di:
-            <ol>
+            <ol style="font-size: 30px;">
               <li class="fragment">Riconoscere oggetti contenuti in immagini.</li>
               <li class="fragment">Estrarre blocchi di testo da immagini.</li>
               <li class="fragment">Rilevare volti in un immagine.</li>
@@ -171,9 +175,98 @@
                   <li class="tab col s4"><a href="#div-camera">Analisi da Webcam</a></li>
                 </ul>
               </div>
-              <div id="div-url" class="col tabcontent s12">Url</div>
-              <div id="dv-file" class="col tabcontent s12">File</div>
-              <div id="div-camera" class="col tabcontent s12">Camera</div>
+              <div id="div-url" class="col tabcontent s12">
+                <div class="row">
+                  <form class="col s6">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="input_image_url" type="url" class="validate">
+                        <label for="input_image_url">Url Immagine</label>
+                        <span class="helper-text" data-error="Url non valida"></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <img id="img_preview" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <a id="lnkAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
+                      
+                      </pre>  
+                  </div>
+                </div>
+
+              </div>
+              <div id="div-file" class="col tabcontent s12">
+                <div class="row">
+                  <form class="col s6">
+                    <div class="row">
+                      <div class="col s12 file-field input-field">
+                        <div class="btn purple darken-2 white-text">
+                          <span>Upload </span>
+                          <input id="input-file" onchange="" type="file" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <img id="img_preview_upload" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <a id="lnkAnalyze_upload" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="code_json_upload" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
+                      
+                      </pre>  
+                  </div>
+                </div>
+
+              </div>
+              <div id="div-camera" class="col tabcontent s12">
+                <div class="row">
+                  <form class="col s6">
+                    <div class="row">
+                      <div class="col s6 input-field">
+                        <a id="lnkSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
+                        <a id="lnkAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                      </div>
+                     
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <!--<img id="img_preview_camera" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">-->
+                        <video autoplay="true" id="video_preview_camera" class="center-align"  ></video>
+                        <canvas id="preview_canvas" width="640px" height="480px"></canvas>
+                      </div>
+                    </div>
+                   
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="code_json_camera" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
+                      
+                      </pre>  
+                  </div>
+                </div>
+
+              </div>
             </div>
        </section>
           <section>Vertical Slide 2</section>
@@ -290,37 +383,139 @@
       });
 
       Reveal.addEventListener("demo-analisi-immagine", function() {
-       /*  $("#btn_analyze_image").off("click");
-        $("#btn_analyze_image").on("click", function() {
+        $('#input_image_url').off('blur');
+        $('#input_image_url').on('blur', function() {
+            if ($(this)[0].checkValidity()) {
+              var url = $(this).val();
+              $('#img_preview')[0].src = url;
+              $('#lnkAnalyze').show();
+              $('#img_preview').removeClass('hide');
+            } 
+            else 
+            {
+              $('#lnkAnalyze').hide();
+            }
+        });
 
-              // Display the image.
-              var sourceImageUrl = document.getElementById("inputImage").value;
-              document.querySelector("#sourceImage").src = sourceImageUrl;
-      
-              // Called each time the slide with the "stats" state is made visible
-              const analyzer = new ImageAnalyzer(endpoint, subKey);
-              analyzer.processImage(sourceImageUrl, 
-                    function(data) {
-                    $("#json_view").text(JSON.stringify(data, null, 2));
-                    hljs.highlightBlock($("#json_view")[0]);
+        $('#lnkAnalyze').off('click');
+        $('#lnkAnalyze').on('click', function() {
+           // Called each time the slide with the "stats" state is made visible
+           const analyzer = new ImageAnalyzer(endpoint, subKey);
+           var sourceImageUrl = $('#img_preview')[0].src; 
 
-                    },
-                    function(jqXHR, textStatus, errorThrown) {
-                    // Display error message.
-                    var errorString =
-                      errorThrown === ""
-                      ? "Error. "
-                      : errorThrown + " (" + jqXHR.status + "): ";
-                    errorString +=
-                      jqXHR.responseText === ""
-                      ? ""
-                      : jQuery.parseJSON(jqXHR.responseText).message;
-                    alert(errorString);
-                    }
-                  );
-            }); */
-            //init tabs
-            $('.tabs').tabs();
+            analyzer.processImage(sourceImageUrl, 
+                  function(data) {
+                  $("#code_json").text(JSON.stringify(data, null, 2));
+                  hljs.highlightBlock($("#code_json")[0]);
+
+                  },
+                  function(jqXHR, textStatus, errorThrown) {
+                  // Display error message.
+                  var errorString =
+                    errorThrown === ""
+                    ? "Error. "
+                    : errorThrown + " (" + jqXHR.status + "): ";
+                  errorString +=
+                    jqXHR.responseText === ""
+                    ? ""
+                    : jQuery.parseJSON(jqXHR.responseText).message;
+                  alert(errorString);
+                  }
+                );
+        }); 
+        
+        const fileInput = document.getElementById('input-file');
+        var file=null;
+
+        fileInput.addEventListener('change', function(e) { 
+            var files = e.target.files;
+           
+            for (let i = 0; i < files.length; i++) {
+              if (files[i].type.match(/^image\//)) {
+                file = files[i];
+                break;
+              }
+            }
+
+            if (file !== null) {
+              $('#img_preview_upload')[0].src = URL.createObjectURL(file);
+              $('#lnkAnalyze_upload').show();
+              $('#img_preview_upload').removeClass('hide');
+            }
+        });
+        
+        $('#lnkAnalyze_upload').off('click');
+        $('#lnkAnalyze_upload').on('click', function() {
+           // Called each time the slide with the "stats" state is made visible
+           const analyzer = new ImageAnalyzer(endpoint, subKey);
+           var sourceImageUrl = $('#img_preview_upload')[0].src; 
+
+            analyzer.uploadImage(file, 
+                  function(data) {
+                  $("#code_json_upload").text(JSON.stringify(data, null, 2));
+                  hljs.highlightBlock($("#code_json_upload")[0]);
+
+                  },
+                  function(errorThrown) {
+                  // Display error message.
+                  var errorString =
+                    errorThrown === ""
+                    ? "Error. "
+                    : errorThrown;
+
+                  alert(errorString);
+                  }
+                );
+        }); 
+
+        $('#lnkSnapshot_camera').off('click');
+        $('#lnkSnapshot_camera').on('click', function() {
+          var cameraHelper = new CameraHelper();
+          var video = $('#video_preview_camera')[0];
+          var canvas = $('#preview_canvas')[0];
+          cameraHelper.takeSnaphotToCanvas(canvas, video);
+          $('#video_preview_camera').hide();
+          $('#lnkAnalyze_camera').show();
+          $('#lnkSnapshot_camera').hide();
+
+        });
+
+        $('#lnkAnalyze_camera').off('click');
+        $('#lnkAnalyze_camera').on('click', function() {
+          const analyzer = new ImageAnalyzer(endpoint, subKey);
+           var sourceImageUrl = $('#img_preview_upload')[0].src; 
+           var picture = $('#preview_canvas')[0];
+           
+            analyzer.uploadImage(analyzer.makeblob(picture.toDataURL()), 
+                  function(data) {
+                  $("#code_json_camera").text(JSON.stringify(data, null, 2));
+                  hljs.highlightBlock($("#code_json_camera")[0]);
+
+                  },
+                  function(errorThrown) {
+                  // Display error message.
+                  var errorString =
+                    errorThrown === ""
+                    ? "Error. "
+                    : errorThrown;
+
+                  alert(errorString);
+                  }
+                );
+        });
+
+        //init tabs
+        $('.tabs').tabs({ onShow: function(tab) {
+           if (tab.id === 'div-camera'){
+            var canvas = $('#preview_canvas')[0];
+            const context = canvas.getContext('2d');  
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            $('#video_preview_camera').show();
+             var cameraHelper = new CameraHelper();
+             cameraHelper.streamToVideoElement($('#video_preview_camera')[0]);
+             $('#lnkAnalyze_camera').hide();
+           }
+        }});
       });
     </script>
   </body>
