@@ -83,7 +83,7 @@
               <li class="fragment">Categorie di servizi</li> <!--Dante-->
               <li class="fragment">Casi d'uso</li> <!--Dante--> 
               <li class="fragment">Costi e modalit&agrave; di utilizzo</li> <!--Dante-->
-              <li class="fragment">Il setup</li> <!--Stefano-->
+              <li class="fragment">Setup Preliiminare</li> <!--Stefano-->
               <li class="fragment">
                 I Servizi: panoramica ed esempi <!--Stefano-->
                 <ul style="font-size: 30px;">
@@ -100,20 +100,6 @@
           </div>
         </section>
         <!--COSA SONO-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-        >
-          <div class="content-banner">
-            <h2>Cosa sono i Microsoft Cognitive Services?</h2>
-            <p>Il comportamento è una risorsa che le persone possiedono per adattarsi al mondo. 
-              Ci permette di modificare il nostro ambiente e la nostra realtà per poterci adattare a 
-              quello che ci accade. Le nostre condotte sono mediate da alcuni processi cognitivi interni, ma quali sono?
-            </p>
-
-          </div>
-        </section>
         <section
           data-background-image="images/purplesky.png"
           data-background-repeat="repeat"
@@ -157,6 +143,20 @@
             <h2>Costi e modalit&agrave; di utilizzo</h2>
           </div>
         </section>
+         <!--SETUP PRELIMINARE-->
+         <section
+         data-background-image="images/purplesky.png"
+         data-background-repeat="repeat"
+         data-background-size="20%"
+       >
+        <section>
+          <div class="content-banner">
+            <h2>Setup Preliminare</h2>
+          </div>
+        </section>
+
+        
+       </section>
         <!--VISION SERVICES-->
         <!--VISION SERVICES: COMPUTER VISION-->
         <section
@@ -352,15 +352,34 @@
      </section>
        
         <!--LANGUAGE SERVICES-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-        >
+      <section
+        data-background-image="images/purplesky.png"
+        data-background-repeat="repeat"
+        data-background-size="20%"
+      >
+      <section>
           <div class="content-banner">
             <h2>Language Services</h2>
+            <p class="fragment">
+              Comprende un set di API che consentone l'elaborazione del linguaggio naturale al fine di interpretare sentimenti ed
+              intenti dell'utente.
+            </p>
+            <p class="fragment">
+              Ad esempio permettono di:
+              <ol style="font-size: 30px;">
+                <li class="fragment">Analisi, comprensione ed interpretazione di testo (LUIS)</li>
+                <li class="fragment">Traduzione di testo.</li>
+                <li class="fragment">Conversazione Bot Style</li>
+              </ol>
+            </p>
           </div>
         </section>
+        <section data-state="demo-analisi-immagine">   
+          <div class="content-banner">
+          <h2>DEMO: Analisi di un'immagine</h2>
+        </section>
+      </section>
+
         <!--SPEECH SERVICES-->
         <section
           data-background-image="images/purplesky.png"
@@ -401,9 +420,9 @@
           <textarea data-template>
             ## Link Utili
         
-            * [Reveal.JS HTML Presentation Framework](https://revealjs.com/)
-            * [Azure Cognitive Services documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/)
-            * [Cognitive Services REST API Docs (West Europe)](https://westeurope.dev.cognitive.microsoft.com/docs/services)
+            1. [Reveal.JS HTML Presentation Framework](https://revealjs.com/)
+            2. [Azure Cognitive Services documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/)
+            3. [Cognitive Services REST API Docs (West Europe)](https://westeurope.dev.cognitive.microsoft.com/docs/services)
           </textarea>>         
         </div>
         </section>
@@ -464,6 +483,9 @@
         margin: 0,
         minScale: 1,
         maxScale: 1,
+        slideNumber: 'c/t', 
+        transition: 'concave',
+        preloadIframes: true,
         pdfSeparateFragments: false,
         dependencies: [
           { src: "plugin/markdown/marked.js" },
