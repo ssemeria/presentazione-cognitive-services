@@ -125,6 +125,7 @@ class TextExtractor {
  }
 
  getBaseUriWithFeatures(){
+
   const uriBase = this.endpoint + "vision/v2.1/ocr";
   return uriBase 
 }
