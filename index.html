@@ -528,16 +528,43 @@
             <p class="fragment">
               Ad esempio permettono di:
               <ol style="font-size: 30px;">
-                <li class="fragment">Analisi, comprensione ed interpretazione di testo (LUIS)</li>
-                <li class="fragment">Traduzione di testo.</li>
-                <li class="fragment">Conversazione Bot Style</li>
+                <li class="fragment">Traduzione ed analisi di testo (Text Analytics)</li>
+                <li class="fragment">Conversazione Bot Style (LUIS)</li>
               </ol>
             </p>
           </div>
         </section>
-        <section data-state="demo-analisi-immagine">   
+        <section data-state="demo-analisi-comprensione-testo">   
           <div class="content-banner">
-          <h2>DEMO: Analisi di un'immagine</h2>
+          <h2>DEMO: Analisi e comprensione di un testo</h2>
+          <div class="row">
+            <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+              <div  class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix purple-text">mode_edit</i>
+                    <textarea style="font-size: 20px;" id="textarea_content" class="materialize-textarea"></textarea>
+                    <label for="textarea_content">Scrivi qualcosa</label>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col s12">                   
+                  <a id="lnkLang" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">language</i>Lingua?</a>
+                </div>
+              </div>
+             <div class="row">
+                <div class="col s12">
+                  <span id="legenda" style="display: none; font-size: 15px" class="purple-text">Score vicino a 1 sentimento positivo / 0 negativo / 0.5 assenza di sentimento </span>                   
+                  <a id="lnkLangSent" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">sentiment_satisfied_alt</i>Sentimento?</a>
+                </div>
+              </div>
+            </form>
+            <div class="col s6">
+                <pre style="border: 0; width: 100%; box-shadow: none;">
+                  <code id="text_anal_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                </pre>  
+            </div>
+          </div>
+
         </section>
       </section>
 
@@ -549,6 +576,7 @@
         >
           <div class="content-banner">
             <h2>Speech Services</h2>
+              
           </div>
         </section>
         <!--DECISION SERVICES-->
@@ -658,6 +686,7 @@
 
       Reveal.addEventListener("demo-analisi-immagine", initDemoAnalisiImmagine);
       Reveal.addEventListener("demo-estrazione-testo", initDemoEstrazioneTesto);
+      Reveal.addEventListener("demo-analisi-comprensione-testo", initDemoAnalisiComprensioneTesto);
     </script>
   </body>
 </html>
