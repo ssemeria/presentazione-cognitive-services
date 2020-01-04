@@ -99,7 +99,8 @@ class CameraHelper {
 
     streamToVideoElement(videoElement) {
         const constraints = {
-          video: true,
+          video: true
+
         };
       
         navigator.mediaDevices.getUserMedia(constraints)
@@ -193,4 +194,64 @@ extractTextFromImage(image, success, error) {
 }
 
 
+}
+
+class TextAnalyzer {
+
+    constructor(endpoint, subcriptionKey) {
+        this.endpoint  = endpoint;
+        this.subcriptionKey = subcriptionKey;
+    }
+
+    getBaseUriLanguage() {
+      const uriBase = this.endpoint + "/text/analytics/v2.1/languages";
+      return uriBase
+    }
+
+    getBaseUriSentiment() {
+      const uriBase = this.endpoint + "/text/analytics/v2.1/sentiment";
+      return uriBase
+    }
+
+    detectTextLanguage(text, success, error) {
+      let subkey = this.subcriptionKey;
+        
+      // Make the REST API call.
+      $.ajax({
+          url: this.getBaseUriLanguage(),
+
+          // Request headers.
+          beforeSend: function(xhrObj){
+              xhrObj.setRequestHeader("Content-Type","application/json");
+              xhrObj.setRequestHeader(
+                  "Ocp-Apim-Subscription-Key", subkey);
+          },
+          type: "POST",
+          // Request body.
+          data: '{"documents": [{"id": 1,"text": "' +text +'"}]}'
+      })
+      .done(success)
+      .fail(error);
+    }
+
+    detectTextSentiment(text, success, error) {
+      let subkey = this.subcriptionKey;
+        
+      // Make the REST API call.
+      $.ajax({
+          url: this.getBaseUriSentiment(),
+
+          // Request headers.
+          beforeSend: function(xhrObj){
+              xhrObj.setRequestHeader("Content-Type","application/json");
+              xhrObj.setRequestHeader(
+                  "Ocp-Apim-Subscription-Key", subkey);
+          },
+          type: "POST",
+          // Request body.
+          data: '{"documents": [{ "language": "it", "id": 1,"text": "' +text +'"}]}'
+      })
+      .done(success)
+      .fail(error);
+    }
 }
