@@ -213,6 +213,13 @@ class TextAnalyzer {
       return uriBase
     }
 
+
+    getBaseUriKeyPhrases() {
+      const uriBase = this.endpoint + "/text/analytics/v2.1/keyPhrases";
+      return uriBase
+    }
+
+
     detectTextLanguage(text, success, error) {
       let subkey = this.subcriptionKey;
         
@@ -240,6 +247,27 @@ class TextAnalyzer {
       // Make the REST API call.
       $.ajax({
           url: this.getBaseUriSentiment(),
+
+          // Request headers.
+          beforeSend: function(xhrObj){
+              xhrObj.setRequestHeader("Content-Type","application/json");
+              xhrObj.setRequestHeader(
+                  "Ocp-Apim-Subscription-Key", subkey);
+          },
+          type: "POST",
+          // Request body.
+          data: '{"documents": [{ "language": "it", "id": 1,"text": "' +text +'"}]}'
+      })
+      .done(success)
+      .fail(error);
+    }
+
+    detectTextKeyPhrases(text, success, error) {
+      let subkey = this.subcriptionKey;
+        
+      // Make the REST API call.
+      $.ajax({
+          url: this.getBaseUriKeyPhrases(),
 
           // Request headers.
           beforeSend: function(xhrObj){

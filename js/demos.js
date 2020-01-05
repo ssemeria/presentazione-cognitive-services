@@ -239,6 +239,7 @@ function initDemoAnalisiComprensioneTesto() {
     $('#lnkLang').toggle($('#textarea_content').val().trim().length > 0);
     $('#lnkLangSent').toggle($('#textarea_content').val().trim().length > 0);
     $('#legenda').toggle($('#textarea_content').val().trim().length > 0);
+    $('#lnkLangKeyPhrases').toggle($('#textarea_content').val().trim().length > 0);
    });
 
    $('#lnkLang').off('click');
@@ -268,6 +269,28 @@ function initDemoAnalisiComprensioneTesto() {
      let text = $('#textarea_content').val().trim();
      let analyzr = new TextAnalyzer(endpoint, subKey);
      analyzr.detectTextSentiment(text, 
+      function(data) {
+        $("#text_anal_code_json").text(JSON.stringify(data, null, 2));
+        hljs.highlightBlock($("#text_anal_code_json")[0]);
+
+        },
+        function(errorThrown) {
+        // Display error message.
+        var errorString =
+          errorThrown === ""
+          ? "Error. "
+          : errorThrown;
+
+        alert(errorString);
+      }
+    );
+   });
+
+   $('#lnkLangKeyPhrases').off('click');
+   $('#lnkLangKeyPhrases').on('click', function() {
+     let text = $('#textarea_content').val().trim();
+     let analyzr = new TextAnalyzer(endpoint, subKey);
+     analyzr.detectTextKeyPhrases(text, 
       function(data) {
         $("#text_anal_code_json").text(JSON.stringify(data, null, 2));
         hljs.highlightBlock($("#text_anal_code_json")[0]);
