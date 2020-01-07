@@ -55,6 +55,14 @@ div.col.tabheader {
   color: #6b219c;
   font-size: 20px; }
 
+.reveal ul:not(.browser-default) > li.fragment {
+  list-style-type: disc; }
+
+span.shout {
+  text-transform: uppercase;
+  color: red;
+  text-shadow: #32145a; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/

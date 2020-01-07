@@ -70,52 +70,6 @@ class ImageAnalyzer {
     }
 }
 
-function makeblob(dataURL) {
-  var BASE64_MARKER = ';base64,';
-  if (dataURL.indexOf(BASE64_MARKER) == -1) {
-      var parts = dataURL.split(',');
-      var contentType = parts[0].split(':')[1];
-      var raw = decodeURIComponent(parts[1]);
-      return new Blob([raw], { type: contentType });
-  }
-  var parts = dataURL.split(BASE64_MARKER);
-  var contentType = parts[0].split(':')[1];
-  var raw = window.atob(parts[1]);
-  var rawLength = raw.length;
-
-  var uInt8Array = new Uint8Array(rawLength);
-
-  for (var i = 0; i < rawLength; ++i) {
-      uInt8Array[i] = raw.charCodeAt(i);
-  }
-
-  return new Blob([uInt8Array], { type: contentType });
-}
-
-
-class CameraHelper {
-
-    constructor() {}
-
-    streamToVideoElement(videoElement) {
-        const constraints = {
-          video: true
-
-        };
-      
-        navigator.mediaDevices.getUserMedia(constraints)
-          .then(function(stream) {
-            videoElement.srcObject = stream;
-          });
-
-    }
-
-    takeSnaphotToCanvas(canvas, video) {
-        const context = canvas.getContext('2d');    
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        video.srcObject.getVideoTracks().forEach(track => track.stop());
-    }
-}
 
 
 class TextExtractor {
@@ -282,4 +236,95 @@ class TextAnalyzer {
       .done(success)
       .fail(error);
     }
+}
+
+
+class SpeechAnalyzer {
+  
+  constructor(subcriptionKey) {
+    this.subcriptionKey = subcriptionKey;
+  }
+
+  getBaseUriSpeech() {
+    return "https://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=it-IT&format=detailed"
+  }
+
+  analyzeSpeech(audio, success, error) {
+    let subkey = this.subcriptionKey;
+        
+    fetch(this.getBaseUriSpeech(), { // Your POST endpoint
+      method: 'POST',
+      headers: {
+        // Content-Type may need to be completely **omitted**
+        // or you may need something
+        "Content-Type": "audio/wav; codecs=audio/pcm",
+        "Accept": "application/json",
+        "Ocp-Apim-Subscription-Key": subkey
+      },
+      body: audio // This is your file object
+    }).then(function(response) {
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.includes("application/json")) {
+        return response.json();
+      }
+      throw new Error("Errore Codice " + response.status + ": " + response.statusText);
+    })
+    .then(success)
+    .catch(error);
+  }
+
+}
+
+
+class SpeechSynthesizer {
+  constructor(subcriptionKey) {
+    this.subcriptionKey = subcriptionKey;
+  }
+
+
+  getBaseUriSpeech() {
+    return "https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1"
+  }
+
+
+  speak(text, success, error) {
+    var that = this;
+    let subkey = this.subcriptionKey;
+    var authUrl = "https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken";
+
+     // Make the REST API call.
+     $.ajax({
+      url: authUrl,
+
+      // Request headers.
+      beforeSend: function(xhrObj){
+        //  xhrObj.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+          xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subkey);
+      },
+      type: "POST",
+    })
+  .done(function(token) {
+      
+    fetch(that.getBaseUriSpeech(), { // Your POST endpoint
+      method: 'POST',
+      headers: {
+        // Content-Type may need to be completely **omitted**
+        // or you may need something
+        "Content-Type": "application/ssml+xml",
+        "X-Microsoft-OutputFormat": "audio-16khz-64kbitrate-mono-mp3",
+        "Authorization": "Bearer " + token
+      },
+      body: "<speak version='1.0' xml:lang='it-IT'><voice xml:lang='it-IT' xml:gender='Female' name='it-IT-ElsaNeural'>" +
+              text +
+            "</voice></speak>"
+    }).then(function(response) {
+       return response.blob();
+    })
+    .then(success)
+    .catch(error);    
+  })
+  .fail(error); 
+
+  }
+
 }

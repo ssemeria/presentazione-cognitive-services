@@ -8,7 +8,7 @@
     />
 
     <title>Cognitive Services</title>
-
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/reveal.css" />
 
@@ -83,7 +83,7 @@
               <li class="fragment">Categorie di servizi</li> <!--Dante-->
               <li class="fragment">Casi d'uso</li> <!--Dante--> 
               <li class="fragment">Costi e modalit&agrave; di utilizzo</li> <!--Dante-->
-              <li class="fragment">Setup Preliminare</li> <!--Stefano-->
+              <li class="fragment">Setup e Definizioni Preliminare</li> <!--Stefano-->
               <li class="fragment">
                 I Servizi: panoramica ed esempi <!--Stefano-->
                 <ul style="font-size: 30px;">
@@ -344,14 +344,31 @@
        >
         <section>
           <div class="content-banner">
-            <h2>Setup Preliminare</h2>
+            <h2>Setup e Definizioni Preliminari</h2>
+            <p class="fragment">
+              Il numero dei Cognitive Service offerti continua ad aumentare.<br>
+              <span class="fragment shout">Perdersi diventa molto facile!</span>
+            </p>
+            <p class="fragment">
+              Diamo alcune definizioni:
+              <ul>
+                <li class="fragment"><em class="green-text">Servizio:</em> un raggruppamento logico di funzionalit&agrave; affini. Si compone di <em>API</em></li>
+                <li class="fragment"><em class="green-text">API:</em> un insieme di risorse remote (nel senso REST del termine) che possiamo chiamare <em>Endpoint</em></li>
+                <li class="fragment"><em class="green-text">Endpoint:</em> singole risorse cui possiamo accedere mediante API REST</li>
+              </ul>
+            </p>
+            <p class="fragment">
+               <a target="_blank" href="https://docs.microsoft.com/en-us/azure/cognitive-services/">Link Servizi</a>
+            </p>
+            <p class="fragment">
+              <a target="_blank" href="https://westeurope.dev.cognitive.microsoft.com/docs/services">Link Endpoint</a>
+           </p>
+            
           </div>
         </section>
-
-        
+  
        </section>
         <!--VISION SERVICES-->
-        <!--VISION SERVICES: COMPUTER VISION-->
         <section
           data-background-image="images/purplesky.png"
           data-background-repeat="repeat"
@@ -360,7 +377,7 @@
         >
         <section>
         <div class="content-banner">
-          <h2>Vision Service: Computer Vision</h2>
+          <h2>Vision Service</h2>
           <p class="fragment">
             Comprende un set di API che consentono l'elaborazione avanzata di immagini e l'estrazioni di metadati ed informazioni
             dalle stesse.
@@ -573,7 +590,7 @@
             <form style="background-color: #f7d0ff; height: 550px" class="col s6">
               <div  class="row">
                   <div  class="input-field col s12">
-                    <i class="material-icons prefix purple-text"></i>mode_edit</i>
+                    <i class="material-icons prefix purple-text">mode_edit</i>
                     <textarea style="font-size: 20px;" id="textarea_content" class="materialize-textarea"></textarea>
                     <label for="textarea_content">Scrivi qualcosa</label>
                   </div>
@@ -611,10 +628,81 @@
           data-background-repeat="repeat"
           data-background-size="20%"
         >
+        <section>
           <div class="content-banner">
             <h2>Speech Services</h2>
-              
+            <p class="fragment">
+              Set di API che consentono la conversione del parlato in testo e di stringhe di testo in parlato
+              "naturale".
+            </p>
+            <p class="fragment">
+              Traduzione del parlato in altre lingue e riconoscimento del soggetto parlante.
+            </p>
+            <p class="fragment">
+              Ad esempio:
+              <ol style="font-size: 30px;">
+                <li class="fragment">Trascrivere una conversazione</li>
+                <li class="fragment">Traduzione simultanea</li>
+                <li class="fragment">Identificazione del parlante</li>
+                <li class="fragment">Analisi del parlato e riconoscimento di intenti</li>
+              </ol>
+            </p>  
           </div>
+        </section>
+        <section data-state="demo-trascrizione-parlato">   
+          <div class="content-banner">
+          <h2>DEMO: Trascrizione del parlato</h2>
+          <div class="row">
+            <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+              <div  class="row">
+                  <div  class="input-field col s12">
+                    <a id="startRecording" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="red-text material-icons left">fiber_manual_record</i>Registra</a>    
+                    <a id="stopRecording" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="white-text material-icons left">stop</i>Stop</a>    
+                  </div>
+              </div>
+              <div  class="row">
+                <div  class="input-field col s12">
+                   <audio id="player" controls></audio>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col s12">                   
+                  <a id="lnkTranscribe" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">text_format</i>Trascrivi</a>
+                </div>
+              </div>
+            
+            </form>
+            <div class="col s6">
+                <pre style="border: 0; width: 100%; box-shadow: none;">
+                  <code id="audio_text_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                </pre>  
+            </div>
+          </div>
+        </section>
+        <section data-state="demo-sintesi-parlato">   
+          <div class="content-banner">
+          <h2>DEMO: Sintesi del parlato</h2>
+          <div class="row">
+            <form style="background-color: #f7d0ff;" class="col s12">
+              <div  class="row">
+                  <div  class="input-field col s6">
+                    <i class="material-icons prefix purple-text">mode_edit</i>
+                    <textarea style="font-size: 20px;" id="textarea_tospeak" class="materialize-textarea"></textarea>
+                    <label for="textarea_tospeak">Scrivi qualcosa</label>
+                  </div>
+                  <div class="col s6">                   
+                    <a id="lnkSintetizza" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">speaker</i>Pronuncia</a>
+                  </div>
+              </div>
+              <div  class="row">
+                <div  class="input-field col s12">
+                   <audio id="player_sintesi" ></audio>
+                </div>
+            </div>
+                 
+            </form>       
+          </div>
+        </section>
         </section>
         <!--DECISION SERVICES-->
         <section
@@ -622,9 +710,27 @@
           data-background-repeat="repeat"
           data-background-size="20%"
         >
+        <section>
           <div class="content-banner">
             <h2>Decision Services</h2>
-          </div>
+            <p class="fragment">
+              Set di API che forniscono raccomandazioni e suggerimenti o che aiutano in procedure di classificazione automatica.
+            </p>
+            <p class="fragment">
+              Ad esempio:
+              <ol style="font-size: 30px;">
+                <li class="fragment">Rilevare anomalie in set di dati, sulla base del pregresso</li>
+                <li class="fragment">Tagging automatico di contenuti testuali, audio e video per rilevare contenuti offensivi, pericolosi o non desiderati</li>
+                <li class="fragment">Suggerimento di contenuti da presentare ad un cliente sulla base dei suoi gusti ("potrebbe piacerti anche questo...") </li>
+              </ol>
+            </p>  
+            </section>
+            <section data-state="demo-sintesi-parlato">   
+              <div class="content-banner">
+              <h2>DEMO: Classificazione del contenuto di un immagine</h2>
+              <div class="row">
+              </div>
+            </section>
         </section>
         <!--SEARCH SERVICES-->
         <section
@@ -690,8 +796,10 @@
 
     <!-- Compiled and minified JavaScript for materialize-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        
+     
+    <script src="js/recorder.js"></script>
 
+    <script src="js/utils.js"></script>
     <script src="js/cognitive-services.js"></script>
     <script src="js/demos.js"></script>
 
@@ -724,6 +832,10 @@
       Reveal.addEventListener("demo-analisi-immagine", initDemoAnalisiImmagine);
       Reveal.addEventListener("demo-estrazione-testo", initDemoEstrazioneTesto);
       Reveal.addEventListener("demo-analisi-comprensione-testo", initDemoAnalisiComprensioneTesto);
+      Reveal.addEventListener("demo-trascrizione-parlato", initDemoAnalisiParlato);
+      Reveal.addEventListener("demo-sintesi-parlato", initDemoSintesiParlato);
+      
+      
     </script>
   </body>
 </html>

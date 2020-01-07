@@ -310,3 +310,77 @@ function initDemoAnalisiComprensioneTesto() {
 }
 
 
+var mic = new Microphone();
+
+function initDemoAnalisiParlato() {
+
+  $('#startRecording').off('click');
+  $('#startRecording').on('click', function() {
+    $('#stopRecording').removeClass('hide');
+    $('#startRecording').addClass('hide');
+    
+    mic.recordAudio();
+  
+  });
+
+  $('#stopRecording').off('click');
+  $('#stopRecording').on('click', function() {
+    mic.stopRecording($('#player')[0]);
+    $('#stopRecording').addClass('hide');
+    $('#startRecording').removeClass('hide');
+
+    mic.fetchAudioDataAsWave(function(waveData){
+      $('#player')[0].src = URL.createObjectURL(waveData);
+      $('#lnkTranscribe').removeClass('hide');
+    });
+  });
+
+  $('#lnkTranscribe').off('click');
+  $('#lnkTranscribe').on('click', function() {
+      var waveData = mic.rawWaveData;
+      var analyzer = new SpeechAnalyzer(subKey);
+      analyzer.analyzeSpeech(waveData,  
+        function(data) {
+          $("#audio_text_code_json").text(JSON.stringify(data, null, 2));
+          hljs.highlightBlock($("#audio_text_code_json")[0]);
+  
+        },
+        function(errorThrown) {
+        // Display error message.
+        var errorString =
+          errorThrown === ""
+          ? "Error. "
+          : errorThrown;
+  
+        alert(errorString);
+      }) 
+  });
+}
+
+function initDemoSintesiParlato() {
+   $('#textarea_tospeak').off('change');
+   $('#textarea_tospeak').on('change', function() {
+      $('#lnkSintetizza').toggle($('#textarea_tospeak').val().trim().length > 0);
+   });
+
+   $('#lnkSintetizza').off('click');
+   $('#lnkSintetizza').on('click', function() {
+     var text = $('#textarea_tospeak').val().trim();
+
+     var synthesizer = new SpeechSynthesizer(subKey);
+     synthesizer.speak(text,
+      function(data) {
+        $('#player_sintesi')[0].src = URL.createObjectURL(data);
+        $('#player_sintesi')[0].play();
+      },
+      function(errorThrown) {
+        // Display error message.
+        var errorString =
+          errorThrown === ""
+          ? "Error. "
+          : errorThrown;
+
+        alert(errorString);
+      });
+   });
+}
