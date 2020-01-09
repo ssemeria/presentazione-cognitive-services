@@ -384,3 +384,73 @@ function initDemoSintesiParlato() {
       });
    });
 }
+
+
+function initDemoModerazioneTesto() {
+  $('#textarea_content_moderate').off('change');
+  $('#textarea_content_moderate').on('change', function() {
+   $('#lnkModerate').toggle($('#textarea_content_moderate').val().trim().length > 0);
+  });
+
+  $('#lnkModerate').off('click');
+  $('#lnkModerate').on('click', function() {
+    let text = $('#textarea_content_moderate').val().trim();
+    const moderator = new ContentModerator(endpoint, subKey);
+    moderator.moderateContent(text,
+      function(data) {
+        $("#text_moderate_code_json").text(JSON.stringify(data, null, 2));
+        hljs.highlightBlock($("#text_moderate_code_json")[0]);
+
+      },
+      function(errorThrown) {
+      // Display error message.
+      var errorString =
+        errorThrown === ""
+        ? "Error. "
+        : errorThrown;
+
+      alert(errorString);
+      });
+  });
+}
+
+function initDemoModerazioneImmagine() {
+  $('#input_image_moderate_url').off('blur');
+  $('#input_image_moderate_url').on('blur', function() {
+      if ($(this)[0].checkValidity()) {
+        var url = $(this).val();
+        $('#img_preview_moderate')[0].src = url;
+        $('#lnkImgModerate').show();
+        $('#img_preview_moderate').removeClass('hide');
+      } 
+      else 
+      {
+        $('#lnkImgModerate').hide();
+      }
+  });
+
+
+  $('#lnkImgModerate').off('click');
+  $('#lnkImgModerate').on('click', function() {
+     // Called each time the slide with the "stats" state is made visible
+     const analyzer = new ImageAnalyzer(endpoint, subKey);
+     var sourceImageUrl = $('#img_preview_moderate')[0].src; 
+
+     const moderator = new ContentModerator(endpoint, subKey);
+     moderator.moderateImage(sourceImageUrl,
+       function(data) {
+         $("#code_json_img_moderate").text(JSON.stringify(data, null, 2));
+         hljs.highlightBlock($("#code_json_img_moderate")[0]);
+ 
+       },
+       function(errorThrown) {
+       // Display error message.
+       var errorString =
+         errorThrown === ""
+         ? "Error. "
+         : errorThrown;
+ 
+       alert(errorString);
+       });
+   });
+}

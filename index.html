@@ -799,12 +799,67 @@
               </ol>
             </p>  
             </section>
-            <section data-state="demo-sintesi-parlato">   
+            <section data-state="demo-moderazione-testo">   
               <div class="content-banner">
-              <h2>DEMO: Classificazione del contenuto di un immagine</h2>
-              <div class="row">
-              </div>
+              <h2>DEMO: Classificazione di un testo</h2>
+                <div class="row">
+                  <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+                    <div  class="row">
+                        <div  class="input-field col s12">
+                          <i class="material-icons prefix purple-text">mode_edit</i>
+                          <textarea style="font-size: 20px;" id="textarea_content_moderate" class="materialize-textarea"></textarea>
+                          <label for="textarea_content_moderate">Scrivi qualcosa</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <a id="lnkModerate" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">language</i>Analizza</a>
+                      </div>
+                    </div>             
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="text_moderate_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                      </pre>  
+                  </div>
             </section>
+            <section data-state="demo-moderazione-immagine">   
+              <div class="content-banner">
+              <h2>DEMO: Classificazione di un'immagine</h2>
+
+                <div class="row">
+                  <form class="col s6">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="input_image_moderate_url" type="url" class="validate">
+                        <label for="input_image_moderate_url">Url Immagine</label>
+                        <span class="helper-text" data-error="Url non valida"></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <img id="img_preview_moderate" class="hide center-align" src="" style="height: 360px; border: 0; background-color: #ffffff;">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <a id="lnkImgModerate" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="code_json_img_moderate" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                      
+                      </pre>  
+                  </div>
+                </div>
+                <aside class="notes">
+                    Url contenuti neutri: <a href="https://insolenzadir2d2.it/wp-content/uploads/2019/09/rise-of-skywalker-poster-tall.jpg">Skywalker</a> <br>
+                    Url contenuti moderati:  <a href="https://www.manduriaoggi.it/upload/marika-fruscio.jpg">Soft</a><br>
+                    Url Contenuti adulti: <a href="https://image.slidesharecdn.com/calendario2011marikafruscio-110111120112-phpapp01/95/calendario-2011-marika-fruscio-1-728.jpg?cb=1294747345">Calendario</a>
+                </aside>
+          </section>
+
         </section>
         <!--SEARCH SERVICES-->
         <section
@@ -814,6 +869,7 @@
         >
           <div class="content-banner">
             <h2>Search Services</h2>
+          
           </div>
         </section>
         <!--LINK UTILI-->
@@ -880,7 +936,7 @@
 
    
    <script>
-	  const endpoint ="https://westeurope.api.cognitive.microsoft.com/";
+	  const endpoint ="https://westeurope.api.cognitive.microsoft.com";
 	  const subKey = "29f82d5f352e4bf8a4fbebfb30f7ec86";	
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
@@ -908,6 +964,8 @@
       Reveal.addEventListener("demo-analisi-comprensione-testo", initDemoAnalisiComprensioneTesto);
       Reveal.addEventListener("demo-trascrizione-parlato", initDemoAnalisiParlato);
       Reveal.addEventListener("demo-sintesi-parlato", initDemoSintesiParlato);
+      Reveal.addEventListener("demo-moderazione-testo", initDemoModerazioneTesto);
+      Reveal.addEventListener("demo-moderazione-immagine", initDemoModerazioneImmagine);
       
       
     </script>

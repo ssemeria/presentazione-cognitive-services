@@ -6,7 +6,7 @@ class ImageAnalyzer {
     }
 
     getBaseUriWithFeatures(){
-        var uriBase = this.endpoint + "vision/v2.1/analyze";
+        var uriBase = this.endpoint + "/vision/v2.1/analyze";
 
         // Request parameters.
         var params = {
@@ -81,7 +81,7 @@ class TextExtractor {
 
  getBaseUriWithFeatures(){
 
-  const uriBase = this.endpoint + "vision/v2.1/ocr";
+  const uriBase = this.endpoint + "/vision/v2.1/ocr";
   return uriBase 
 }
 
@@ -327,4 +327,71 @@ class SpeechSynthesizer {
 
   }
 
+}
+
+
+
+class ContentModerator {
+  constructor(endpoint, subcriptionKey) {
+    this.subcriptionKey = subcriptionKey;
+    this.endpoint = endpoint;
+  }
+
+
+  getBaseUriTextModerator() {
+    const uriBase = this.endpoint + "/contentmoderator/moderate/v1.0/ProcessText/Screen";
+    return uriBase;
+  }
+
+
+  getBaseUriImageModerator() {
+    const uriBase = this.endpoint + "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
+    return uriBase;
+  }
+
+
+  moderateContent(content, success, error) {
+    let subkey = this.subcriptionKey;
+    // Make the REST API call.
+    var params = {
+      // Request parameters
+      "autocorrect": true,
+      "PII": true,
+      "classify": true
+  };
+    $.ajax({
+        url: this.getBaseUriModerator()  + "?" + $.param(params),
+
+        // Request headers.
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("Content-Type","text/plain");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subkey);
+        },
+        type: "POST",
+        // Request body.
+        data: content
+    })
+    .done(success)
+    .fail(error);
+  }
+
+
+  moderateImage(url, success, error) {
+    let subkey = this.subcriptionKey;
+   
+    $.ajax({
+        url: this.getBaseUriImageModerator(),
+
+        // Request headers.
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subkey);
+        },
+        type: "POST",
+        // Request body.
+        data: '{ "DataRepresentation":"URL", "Value":"'+url+'" }'
+    })
+    .done(success)
+    .fail(error);
+  }
 }
