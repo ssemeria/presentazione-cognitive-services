@@ -6,7 +6,7 @@ class ImageAnalyzer {
     }
 
     getBaseUriWithFeatures(){
-        var uriBase = this.endpoint + "vision/v2.1/analyze";
+        var uriBase = this.endpoint + "/vision/v2.1/analyze";
 
         // Request parameters.
         var params = {
