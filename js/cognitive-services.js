@@ -395,3 +395,41 @@ class ContentModerator {
     .fail(error);
   }
 }
+
+
+class SearchService {
+ 
+  constructor(endpoint, subcriptionKey) {
+    this.subcriptionKey = subcriptionKey;
+    this.endpoint = endpoint;
+  }
+  
+
+  getBaseUriAutosuggest() {
+    const uriBase = this.endpoint + "/bing/v7.0/suggestions";
+    return uriBase;
+  }
+
+  autosuggestSomething(query, success, error) {
+    let subkey = this.subcriptionKey;
+   
+    var params = {
+     "q" : query
+    };
+
+    $.ajax({
+        url: this.getBaseUriAutosuggest() + '?' + $.param(params),
+
+        // Request headers.
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subkey);
+        },
+        type: "GET"
+        
+    })
+    .done(success)
+    .fail(error);
+  }
+
+
+}

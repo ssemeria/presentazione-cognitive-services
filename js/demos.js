@@ -454,3 +454,35 @@ function initDemoModerazioneImmagine() {
        });
    });
 }
+
+
+function initDemoAutocompleteSearch() {
+  $('#autocomplete-input').autocomplete();
+  $('#autocomplete-input').off('keyup');
+  $('#autocomplete-input').on('keyup', function() {
+
+    var query = $('#autocomplete-input').val();
+    var search = new SearchService(endpoint, subKey);
+    search.autosuggestSomething(query,
+      function(data) {
+        $("#text_autocomplete_code_json").text(JSON.stringify(data, null, 2));
+        hljs.highlightBlock($("#text_autocomplete_code_json")[0]);
+        var suggestions = data.suggestionGroups[0].searchSuggestions.map(function(suggestion) {
+            var item = {};
+            item[""+suggestion.displayText+""] = suggestion.url;
+            return item;
+        }); 
+        $('#autocomplete-input').autocomplete("updateData",suggestions);
+      },
+      function(errorThrown) {
+      // Display error message.
+      var errorString =
+        errorThrown === ""
+        ? "Error. "
+        : errorThrown;
+
+      alert(errorString);
+      });
+  });
+
+}

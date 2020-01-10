@@ -871,10 +871,43 @@
           data-background-repeat="repeat"
           data-background-size="20%"
         >
+        <section>
           <div class="content-banner">
             <h2>Search Services</h2>
-          
-          </div>
+            <p class="fragment">
+              Set di API che consentono l'utilizzo delle funzionalit&agrave; di ricerca avanzata di Bing 
+              nelle proprie applicazioni.
+            </p>
+            <p class="fragment">
+              Ad esempio:
+              <ol style="font-size: 30px;">
+                <li class="fragment">Suggerire termine per autocompletare input dell'utente</li>
+                <li class="fragment">Suggerire video o immagini sulla base di query inserite dall'utente</li>
+                <li class="fragment">Suggerimento di notizie o correzione ortografica </li>
+              </ol>
+            </p>  
+            </section>
+            <section data-state="demo-suggerimenti-ricerca">   
+              <div class="content-banner">
+              <h2>DEMO: Suggerimenti per una ricerca</h2>
+                <div class="row">
+                  <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+                    <div  class="row">
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix purple-text">textsms</i>
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Autocomplete</label>
+                      </div>
+                    </div>        
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="text_autocomplete_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                      </pre>  
+                  </div>
+                </div>
+            </section>
+
         </section>
         <!--LINK UTILI-->
         <section
@@ -955,9 +988,11 @@
         transition: 'concave',
         preloadIframes: true,
         pdfSeparateFragments: false,
+        defaultTiming: 120,
         dependencies: [
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
           { src: "plugin/notes/notes.js", async: true },
           { src: "plugin/highlight/highlight.js", async: true }
         ]
@@ -969,8 +1004,8 @@
       Reveal.addEventListener("demo-trascrizione-parlato", initDemoAnalisiParlato);
       Reveal.addEventListener("demo-sintesi-parlato", initDemoSintesiParlato);
       Reveal.addEventListener("demo-moderazione-testo", initDemoModerazioneTesto);
-      Reveal.addEventListener("demo-moderazione-immagine", initDemoModerazioneImmagine);
-      
+      Reveal.addEventListener("demo-moderazione-immagine", initDemoModerazioneImmagine); 
+      Reveal.addEventListener("demo-suggerimenti-ricerca", initDemoAutocompleteSearch);
       
     </script>
   </body>
