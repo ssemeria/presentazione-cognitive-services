@@ -467,12 +467,11 @@ function initDemoAutocompleteSearch() {
       function(data) {
         $("#text_autocomplete_code_json").text(JSON.stringify(data, null, 2));
         hljs.highlightBlock($("#text_autocomplete_code_json")[0]);
-        var suggestions = data.suggestionGroups[0].searchSuggestions.map(function(suggestion) {
-            var item = {};
-            item[""+suggestion.displayText+""] = suggestion.url;
-            return item;
-        }); 
-        $('#autocomplete-input').autocomplete("updateData",suggestions);
+        var suggestions = data.suggestionGroups[0].searchSuggestions;
+        $("#search_results").empty();
+        for (var i =0; i < suggestions.length; i++) {
+          $("#search_results").append('<li class="collection-item"><div> '+ suggestions[i].displayText +' <a href="'+ suggestions[i].url +'" class="secondary-content"><i class="material-icons">send</i></a></div></li>');
+        }
       },
       function(errorThrown) {
       // Display error message.
