@@ -20,6 +20,35 @@ class CameraHelper {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         video.srcObject.getVideoTracks().forEach(track => track.stop());
     }
+
+    clearCanvas(canvas) {
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    drawRectangle(canvas, rect) {
+        let context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.moveTo(rect.left, rect.top);
+        context.lineTo(rect.left+rect.width, rect.top);
+        context.lineTo(rect.left+rect.width, rect.top + rect.height);
+        context.lineTo(rect.left, rect.top + rect.height);
+        context.lineTo(rect.left, rect.top);
+        context.lineWidth = 2;
+        context.strokeStyle = this.getRandomColor(); 
+        context.stroke();      
+            
+    }
 }
 
 

@@ -473,9 +473,8 @@
             <div class="row">
               <div class="col tabheader s12">
                 <ul id="demo-analisi" class="tabs blue-text">
-                  <li class="tab col s4"><a class="active" href="#div-url">Analisi da Url</a></li>
-                  <li class="tab col s4"><a href="#div-file">Analisi da File</a></li>
-                  <li class="tab col s4"><a href="#div-camera">Analisi da Webcam</a></li>
+                  <li class="tab col s6"><a class="active" href="#div-url">Analisi da Url</a></li>
+                  <li class="tab col s6"><a href="#div-camera">Analisi da Webcam</a></li>
                 </ul>
               </div>
               <div id="div-url" class="col tabcontent s12">
@@ -502,40 +501,6 @@
                   <div class="col s6">
                       <pre style="border: 0; width: 100%; box-shadow: none;">
                         <code id="code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
-                      
-                      </pre>  
-                  </div>
-                </div>
-
-              </div>
-              <div id="div-file" class="col tabcontent s12">
-                <div class="row">
-                  <form class="col s6">
-                    <div class="row">
-                      <div class="col s12 file-field input-field">
-                        <div class="btn purple darken-2 white-text">
-                          <span>Upload </span>
-                          <input id="input-file" onchange="" type="file" accept="image/*">
-                        </div>
-                        <div class="file-path-wrapper">
-                          <input class="file-path validate" type="text">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <img id="img_preview_upload" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <a id="lnkAnalyze_upload" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                      </div>
-                    </div>
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="code_json_upload" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
                       
                       </pre>  
                   </div>
@@ -585,32 +550,36 @@
           </div>
           <div id="div-text-url" class="col tabcontent s12">
             <div class="row">
-              <form class="col s12">
+              <form class="col s6">
                 <div class="row">
-                  <div class="input-field col s6">
+                  <div class="input-field col s10">
                     <input id="input_text_url" type="url" class="validate">
                     <label for="input_text_url">Url Immagine</label>
                     <span class="helper-text" data-error="Url non valida"></span>
                   </div>
-                  <div class="input-field col s6">                   
-                    <a id="lnkTextAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                  <div class="input-field col s2">                   
+                    <a id="lnkTextAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i></a>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col s6">                   
-                    <img id="img_text_preview"   style="visibility:hidden; width: 100%; height: 400px; border: 0; background-color: #ffffff;">
+                  <div class="col s12">                   
+                    <img id="img_text_preview"   style="visibility:hidden;  height: 400px; border: 0; background-color: #ffffff;">
                   </div>
                 </div>
                 
               </form>
-            
-            </div>
-
+              <div class="col s6">
+                <div class="card  white" >
+                  <div id="extracted_text" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
+                  </div> 
+                </div>
+              </div>
           </div>
+        </div>
   
           <div id="div-text-camera" class="col tabcontent s12">
             <div class="row">
-              <form class="col s12">
+              <form class="col s6">
                 <div class="row">
                   <div class="center-align col s12 input-field">
                     <a id="lnkTextSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
@@ -626,7 +595,11 @@
                 </div>
                
               </form>
-             
+              <div class="col s6">
+                <div class="card  white" >
+                  <div id="extracted_text_camera" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
+                  </div>                
+              </div>
             </div>
 
           </div>
@@ -828,7 +801,7 @@
               <h2>DEMO: Classificazione di un'immagine</h2>
 
                 <div class="row">
-                  <form class="col s6">
+                  <form style="background-color: #f7d0ff; height: 550px"  class="col s6">
                     <div class="row">
                       <div class="input-field col s12">
                         <input id="input_image_moderate_url" type="url" class="validate">
@@ -856,9 +829,40 @@
                 <aside class="notes">
                     Url contenuti neutri: <a href="https://insolenzadir2d2.it/wp-content/uploads/2019/09/rise-of-skywalker-poster-tall.jpg">Skywalker</a> <br>
                     Url contenuti moderati:  <a href="https://www.manduriaoggi.it/upload/marika-fruscio.jpg">Soft</a><br>
-                    Url Contenuti adulti: <a href="https://image.slidesharecdn.com/calendario2011marikafruscio-110111120112-phpapp01/95/calendario-2011-marika-fruscio-1-728.jpg?cb=1294747345">Calendario</a>
                 </aside>
           </section>
+          <section data-state="demo-conteggio-volti">   
+            <div class="content-banner">
+            <h2>DEMO: Conteggio volti </h2>
+
+            <div class="row">
+              <form class="col s6">
+             
+                <div class="row">
+                  <div class="center-align col s12">                   
+                    <video autoplay="true" id="video_preview_faces_camera" class="center-align"  ></video>
+                   
+                  </div>
+                </div>
+               
+              </form>
+              <div class="col s6">
+                  <canvas style="width: 640; height: 480;" class="white card-content" id="preview_faces_canvas"  width="640px" height="480px"></canvas>  
+              </div>
+            </div>
+              <div class="row">
+                <div class="col s4 input-field">
+                  <a id="lnkFacesSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
+                  <a id="lnkFacesAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                </div>
+               <div class="col s8" >
+                 <p id="text-faces-detected" class="white-text center-align blue lighten-1" >
+
+                 </p>
+               </div>
+              </div>
+              
+        </section>
 
         </section>
         <!--SEARCH SERVICES-->
@@ -1010,6 +1014,7 @@
       Reveal.addEventListener("demo-moderazione-testo", initDemoModerazioneTesto);
       Reveal.addEventListener("demo-moderazione-immagine", initDemoModerazioneImmagine); 
       Reveal.addEventListener("demo-suggerimenti-ricerca", initDemoAutocompleteSearch);
+      Reveal.addEventListener("demo-conteggio-volti", initDemoConteggioVolti);
       
     </script>
   </body>

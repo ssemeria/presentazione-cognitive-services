@@ -47,50 +47,9 @@ function initDemoAnalisiImmagine() {
             );
     }); 
     
-    const fileInput = document.getElementById('input-file');
-    var file=null;
-
-    fileInput.addEventListener('change', function(e) { 
-        var files = e.target.files;
-       
-        for (let i = 0; i < files.length; i++) {
-          if (files[i].type.match(/^image\//)) {
-            file = files[i];
-            break;
-          }
-        }
-
-        if (file !== null) {
-          $('#img_preview_upload')[0].src = URL.createObjectURL(file);
-          $('#lnkAnalyze_upload').show();
-          $('#img_preview_upload').removeClass('hide');
-        }
-    });
+   
     
-    $('#lnkAnalyze_upload').off('click');
-    $('#lnkAnalyze_upload').on('click', function() {
-       // Called each time the slide with the "stats" state is made visible
-       const analyzer = new ImageAnalyzer(endpoint, subKey);
-       var sourceImageUrl = $('#img_preview_upload')[0].src; 
-
-        analyzer.uploadImage(file, 
-              function(data) {
-              $("#code_json_upload").text(JSON.stringify(data, null, 2));
-              hljs.highlightBlock($("#code_json_upload")[0]);
-
-              },
-              function(errorThrown) {
-              // Display error message.
-              var errorString =
-                errorThrown === ""
-                ? "Error. "
-                : errorThrown;
-
-              alert(errorString);
-              }
-            );
-    }); 
-
+    
     $('#lnkSnapshot_camera').off('click');
     $('#lnkSnapshot_camera').on('click', function() {
       var cameraHelper = new CameraHelper();
@@ -106,13 +65,12 @@ function initDemoAnalisiImmagine() {
     $('#lnkAnalyze_camera').off('click');
     $('#lnkAnalyze_camera').on('click', function() {
       const analyzer = new ImageAnalyzer(endpoint, subKey);
-       var sourceImageUrl = $('#img_preview_upload')[0].src; 
-       var picture = $('#preview_canvas')[0];
+      var picture = $('#preview_canvas')[0];
        
         analyzer.uploadImage(makeblob(picture.toDataURL()), 
               function(data) {
               $("#code_json_camera").text(JSON.stringify(data, null, 2));
-              hljs.highlightBlock($("#code_json_camera")[0]);
+                hljs.highlightBlock($("#code_json_camera")[0]);
 
               },
               function(errorThrown) {
@@ -137,6 +95,8 @@ function initDemoAnalisiImmagine() {
          var cameraHelper = new CameraHelper();
          cameraHelper.streamToVideoElement($('#video_preview_camera')[0]);
          $('#lnkAnalyze_camera').hide();
+         $('#lnkSnapshot_camera').show();
+         $("#code_json_camera").text('');
        }
     }});
 }
@@ -164,7 +124,7 @@ function initDemoEstrazioneTesto() {
 
        extractor.extractText(sourceImageUrl, 
               function(data) {     
-                showDialog("Testo Estratto",extractor.convertResponseToTextString(data));
+                 $('#extracted_text').html(extractor.convertResponseToTextString(data));
               },
               function(jqXHR, textStatus, errorThrown) {
               // Display error message.
@@ -201,7 +161,7 @@ function initDemoEstrazioneTesto() {
        
        extractor.extractTextFromImage(makeblob(picture.toDataURL()), 
               function(data) {
-                showDialog("Testo Estratto",extractor.convertResponseToTextString(data));
+                $('#extracted_text_camera').html(extractor.convertResponseToTextString(data));
               },
               function(errorThrown) {
               // Display error message.
@@ -484,4 +444,55 @@ function initDemoAutocompleteSearch() {
       });
   });
 
+}
+
+
+function initDemoConteggioVolti() {
+    $('#video_preview_faces_camera').show();
+    var cameraHelper = new CameraHelper();
+    cameraHelper.streamToVideoElement($('#video_preview_faces_camera')[0]);
+    let canvas_to_clear = $('#preview_faces_canvas')[0];
+    cameraHelper.clearCanvas(canvas_to_clear);
+    $('#lnkFacesAnalyze_camera').hide();
+    $('#lnkFacesSnapshot_camera').show();
+    
+    $('#text-faces-detected').html('');
+    
+    $('#lnkFacesSnapshot_camera').off('click');
+    $('#lnkFacesSnapshot_camera').on('click', function() {
+      var cameraHelper = new CameraHelper();
+      var video = $('#video_preview_faces_camera')[0];
+      var canvas = $('#preview_faces_canvas')[0];
+      cameraHelper.takeSnaphotToCanvas(canvas, video);
+      $('#lnkFacesAnalyze_camera').show();
+      $('#lnkFacesSnapshot_camera').hide();
+    });
+
+    $('#lnkFacesAnalyze_camera').off('click');
+    $('#lnkFacesAnalyze_camera').on('click', function() {
+      const detector = new FaceDetector(endpoint, subKey);
+      var picture = $('#preview_faces_canvas')[0];
+       
+        detector.uploadImage(makeblob(picture.toDataURL()), 
+              function(data) {
+                var cameraHelper = new CameraHelper();
+                let canvas = $('#preview_faces_canvas')[0];
+                let faces = data;
+                for (var i = 0; i < faces.length; i++)
+                {
+                  cameraHelper.drawRectangle(canvas, data[i].faceRectangle);
+                }
+                $('#text-faces-detected').html("Ho contato " + faces.length + " person" + ((faces.length > 1 )? "e" : "a") +" in totale");
+              },
+              function(errorThrown) {
+              // Display error message.
+              var errorString =
+                errorThrown === ""
+                ? "Error. "
+                : errorThrown;
+
+              alert(errorString);
+              }
+        );
+    });
 }

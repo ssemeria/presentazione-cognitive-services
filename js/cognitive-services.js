@@ -433,3 +433,50 @@ class SearchService {
 
 
 }
+
+class FaceDetector 
+{
+  constructor(endpoint, subcriptionKey) {
+      this.endpoint  = endpoint;
+      this.subcriptionKey = subcriptionKey;
+  }
+
+  getBaseUriFaces(){
+      var uriBase = this.endpoint + "/face/v1.0/detect";
+
+      // Request parameters.
+      var params = {
+          "detectionModel": "detection_02",
+          "recognitionModel": "recognition_02"
+      };
+
+      return uriBase + "?" + $.param(params)
+
+  }
+
+  uploadImage(imageFile, success, error) {
+
+    let subkey = this.subcriptionKey;
+
+    fetch(this.getBaseUriFaces(), { // Your POST endpoint
+    method: 'POST',
+    headers: {
+      // Content-Type may need to be completely **omitted**
+      // or you may need something
+      "Content-Type": "application/octet-stream",
+      "Ocp-Apim-Subscription-Key": subkey
+    },
+    body: imageFile // This is your file object
+  }).then(function(response) {
+    var contentType = response.headers.get("content-type");
+    if(contentType && contentType.includes("application/json")) {
+      return response.json();
+    }
+    throw new Error("Errore Codice " + response.status + ": " + response.statusText);
+  })
+  .then(success)
+  .catch(error);
+}
+
+}
+
