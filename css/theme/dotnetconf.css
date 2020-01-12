@@ -11,7 +11,7 @@
   text-align: left;
   width: 100%;
   height: 100%;
-  background-color: #511c74;
+  background-color: white;
   display: inline-block; }
 
 .reveal ul.tabs {
@@ -74,7 +74,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 40px;
   font-weight: normal;
-  color: #ffffff; }
+  color: #511c74; }
 
 ::selection {
   color: #fff;
@@ -101,13 +101,13 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #ffffff;
-  font-family: "League Gothic", Impact, sans-serif;
+  color: #592ac7;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
   text-transform: none;
-  text-shadow: none;
+  text-shadow: 2px 2px 2px #7a188b;
   word-wrap: break-word; }
 
 .reveal h1 {
@@ -286,7 +286,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #ffffff;
+  border: 4px solid #511c74;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
