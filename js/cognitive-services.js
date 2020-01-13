@@ -360,7 +360,7 @@ class ContentModerator {
       "classify": true
   };
     $.ajax({
-        url: this.getBaseUriModerator()  + "?" + $.param(params),
+        url: this.getBaseUriTextModerator()  + "?" + $.param(params),
 
         // Request headers.
         beforeSend: function(xhrObj){
