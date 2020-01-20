@@ -46,26 +46,33 @@
           data-background-repeat="repeat"
           data-background-size="20%"
         >
-          <div class="content-banner" style="background-color: #672296; color: white;">
-            <div style="float: left;">
-              <h2 style="color: white; text-shadow: 2px 2px 2px #f7d0ff;">Introduzione ai <br />Cognitive Services</h2>
-              <div style="padding-top: 20%;">
+          <div class="content-banner" style="background-color: #672296; color: white; height: 60%">
+            <div class="row" >
+              <div class="col s8">
+                <h2 style="color: white; text-shadow: 2px 2px 2px #f7d0ff;">Introduzione ai <br />Cognitive Services</h2>
+              </div>
+              <div class="col s4">
+                <img
+                class="hide-on-med-and-down"
+                  style="background: none; border: none; box-shadow: none; width: 350px;"
+                  src="images/cognitive-services.png"
+                />
+                
+              </div>          
+            </div>
+            <div class="row" style="padding-top: 20px;">
+              <div class="col s6">
                 <p>Dante Ciambella</p>
                 <p>Stefano Semeria</p>
               </div>
-            </div>
-            <div style="float: left; ">
+            <div class="col s6">
               <img
-                style="background: none; border: none; box-shadow: none; width: 550px; padding-top: 35%;"
+              class="hide-on-med-and-down"
+                style="background: none; border: none; box-shadow: none; width: 450px;"
                 src="images/cog-logo.png"
               />
             </div>
-            <div style="float: left; ">
-              <img
-                style="background: none; border: none; box-shadow: none; width: 350px;"
-                src="images/cognitive-services.png"
-              />
-            </div>
+          </div>
           </div>
         </section>
         <!--AGENDA-->
@@ -80,12 +87,10 @@
               <li class="fragment">
                 Cosa sono i Microsoft Cognitive Services? <!--Dante-->
               </li>
-              <li class="fragment">Categorie di servizi</li> <!--Dante-->
-              <li class="fragment">Casi d'uso</li> <!--Dante--> 
-              <li class="fragment">Costi e modalit&agrave; di utilizzo</li> <!--Dante-->
-              <li class="fragment">Setup e Definizioni Preliminare</li> <!--Stefano-->
-              <li class="fragment">
-                I Servizi: panoramica ed esempi <!--Stefano-->
+              <li class="fragment">Parole Chiave</li> <!--Stefano-->
+              <li class="fragment">Setup Preliminare</li> <!--Stefano-->
+
+              <li class="fragment">Categorie di servizi
                 <ul style="font-size: 30px;">
                   <li class="fragment">Vision Services</li> <!--Stefano-->
                   <li class="fragment">Language Services</li> <!--Stefano-->
@@ -93,7 +98,9 @@
                   <li class="fragment">Decision Services</li> <!--Stefano-->
                   <li class="fragment">Search Services</li> <!--Stefano-->
                 </ul>
-              </li>
+              </li> <!--Dante-->
+              <li class="fragment">Casi d'uso</li> <!--Dante--> 
+              <li class="fragment">Costi e modalit&agrave; di utilizzo</li> <!--Dante-->         
               <li class="fragment">Link utili</li>
               <li class="fragment">Q&A - Domande e Risposte</li>
             </ol>
@@ -163,6 +170,69 @@
             </ul>
           </div>
         </section>
+
+           <!--SETUP PRELIMINARE-->
+           <section
+           data-background-image="images/purplesky.png"
+           data-background-repeat="repeat"
+           data-background-size="20%"
+         >
+            <div class="content-banner">
+              <h2>Parole Chiave</h2>
+              <p class="fragment">
+                Tantissime le possibilit&agrave;<br>
+                <span class="fragment shout">Confondersi diventa molto facile!</span>
+              </p>
+              <p class="fragment">
+                Diamo alcune definizioni:
+                <ul>
+                  <li class="fragment"><em class="green-text">Servizio:</em> un raggruppamento logico di funzionalit&agrave; affini. Si compone di <em>API</em></li>
+                  <li class="fragment"><em class="green-text">API:</em> un insieme di risorse remote (nel senso REST del termine) che possiamo chiamare <em>Endpoint</em></li>
+                  <li class="fragment"><em class="green-text">Endpoint:</em> singole risorse cui possiamo accedere mediante API REST</li>
+                </ul>
+              </p>
+              <p class="fragment">
+                 <a target="_blank" href="https://docs.microsoft.com/en-us/azure/cognitive-services/">Link Servizi</a>
+              </p>
+              <p class="fragment">
+                <a target="_blank" href="https://westeurope.dev.cognitive.microsoft.com/docs/services">Link Endpoint</a>
+             </p>
+              
+            </div>
+          </section>
+
+         
+         <section>
+          <div class="content-banner">
+            <h2>Setup Preliminare</h2>
+            <div class="row">
+              <div class="col s6">
+              <div class="row">
+                <div class="col s12">
+                  <ul>
+                    <li class="fragment">Creare una risorsa di tipo Cognitive Services dal Portale Azure</li>
+                    <li class="fragment">Scegliere Sottoscrizione, Area, Piano Tariffario e Gruppo di Risorse per la nuova risorsa </li>
+                    <li class="fragment">Annotare API key e Endpoint per la chiamata al servizio</li>
+                    <li class="fragment">Decidere linguaggio e se utilizzare un SDK o direttamente l'interfaccia REST <span class="red-text fragment"> Javascript + REST!</span></li> 
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                    <a class="fragment" href="https://portal.azure.com">Portale Azure</a>
+                </div>
+              </div>
+                
+              </div>
+              <div class="col s6">
+                <img src="images/crea-cogserv.png" style="width: 65%">
+              </div>
+            </div>
+           
+                    
+          </div>
+        </section>
+
         <!--LE CATEGORIE-->
         <section
           data-background-image="images/purplesky.png"
@@ -211,19 +281,171 @@
 
         </div>
       </section>
+    
+         <!--VISION SERVICES-->
       <section
-        data-background-image="images/purplesky.png"
-        data-background-repeat="repeat"
-        data-background-size="20%"
+         data-background-image="images/purplesky.png"
+         data-background-repeat="repeat"
+         data-background-size="20%"
+         data-state="analyze_image_demo"
+       >
+       <section
+       data-background-image="images/purplesky.png"
+       data-background-repeat="repeat"
+       data-background-size="20%"
       >
-        <div class="content-banner">
-          <h2>Categorie di servizi : Vision - Un esempio</h2>
-          <ol>
-            <li class="fragment">L'apprendimento senza supervisione consente al modello di comprendere il layout e i dati dei campi senza l'etichettatura manuale dei dati o la codifica intensiva.</li>
-            <li class="fragment">È inoltre possibile eseguire l'apprendimento supervisionato con i dati etichettati manualmente</li>         
-          </ol>
-        </div>
+       <div class="content-banner">
+         <h2>Categorie di servizi : Vision - Un esempio</h2>
+         <ol>
+           <li class="fragment">L'apprendimento senza supervisione consente al modello di comprendere il layout e i dati dei campi senza l'etichettatura manuale dei dati o la codifica intensiva.</li>
+           <li class="fragment">È inoltre possibile eseguire l'apprendimento supervisionato con i dati etichettati manualmente</li>         
+         </ol>
+       </div>
+     </section>
+
+       <section data-state="demo-analisi-immagine">   
+           <div class="content-banner" style="height: 920px">
+           <h2>DEMO: Analisi di un'immagine</h2>
+          
+           <div class="row">
+             <div class="col tabheader s12">
+               <ul id="demo-analisi" class="tabs blue-text">
+                 <li class="tab col s6"><a class="active" href="#div-url">Analisi da Url</a></li>
+                 <li class="tab col s6"><a href="#div-camera">Analisi da Webcam</a></li>
+               </ul>
+             </div>
+             <div id="div-url" class="col tabcontent s12">
+               <div class="row">
+                 <form class="col s6">
+                   <div class="row">
+                     <div class="input-field col s12">
+                       <input id="input_image_url" type="url" class="validate">
+                       <label for="input_image_url">Url Immagine</label>
+                       <span class="helper-text" data-error="Url non valida"></span>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col s12">                   
+                       <img id="img_preview" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col s12">                   
+                       <a id="lnkAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                     </div>
+                   </div>
+                 </form>
+                 <div class="col s6">
+                     <pre style="border: 0; width: 100%; box-shadow: none;">
+                       <code id="code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
+                     
+                     </pre>  
+                 </div>
+               </div>
+
+             </div>
+             <div id="div-camera" class="col tabcontent s12">
+               <div class="row">
+                 <form class="col s6">
+                   <div class="row">
+                     <div class="col s6 input-field">
+                       <a id="lnkSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
+                       <a id="lnkAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                     </div>
+                    
+                   </div>
+                   <div class="row">
+                     <div class="col s12">                   
+                       <!--<img id="img_preview_camera" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">-->
+                       <video autoplay="true" id="video_preview_camera" class="center-align"  ></video>
+                       <canvas id="preview_canvas" width="640px" height="480px"></canvas>
+                     </div>
+                   </div>
+                  
+                 </form>
+                 <div class="col s6">
+                     <pre style="border: 0; width: 100%; box-shadow: none;">
+                       <code id="code_json_camera" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
+                     
+                     </pre>  
+                 </div>
+               </div>
+
+             </div>
+           </div>
       </section>
+      <section data-state="demo-estrazione-testo">   
+       <div class="content-banner" style="height: 920px">
+       <h2>DEMO: Estrazione Testo</h2>
+      
+       <div class="row">
+         <div class="col tabheader s12">
+           <ul id="demo-text" class="tabs">
+             <li class="tab col s6"><a class="active" href="#div-text-url">Analisi da Url</a></li>
+             <li class="tab col s6"><a href="#div-text-camera">Analisi da Webcam</a></li>
+           </ul>
+         </div>
+         <div id="div-text-url" class="col tabcontent s12">
+           <div class="row">
+             <form class="col s6">
+               <div class="row">
+                 <div class="input-field col s10">
+                   <input id="input_text_url" type="url" class="validate">
+                   <label for="input_text_url">Url Immagine</label>
+                   <span class="helper-text" data-error="Url non valida"></span>
+                 </div>
+                 <div class="input-field col s2">                   
+                   <a id="lnkTextAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i></a>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col s12">                   
+                   <img id="img_text_preview"   style="visibility:hidden;  height: 400px; border: 0; background-color: #ffffff;">
+                 </div>
+               </div>
+               
+             </form>
+             <div class="col s6">
+               <div class="card  white" >
+                 <div id="extracted_text" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
+                 </div> 
+               </div>
+             </div>
+         </div>
+       </div>
+ 
+         <div id="div-text-camera" class="col tabcontent s12">
+           <div class="row">
+             <form class="col s6">
+               <div class="row">
+                 <div class="center-align col s12 input-field">
+                   <a id="lnkTextSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
+                   <a id="lnkTextAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                 </div>
+                
+               </div>
+               <div class="row">
+                 <div class="center-align col s12">                   
+                   <video autoplay="true" id="video_preview_text_camera" class="center-align"  ></video>
+                   <canvas id="preview_text_canvas" style="display: none;" width="640px" height="480px"></canvas>
+                 </div>
+               </div>
+              
+             </form>
+             <div class="col s6">
+               <div class="card  white" >
+                 <div id="extracted_text_camera" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
+                 </div>                
+             </div>
+           </div>
+
+         </div>
+       </div>
+       </div>
+     </section>
+    </section>
+ 
+
       <section
         data-background-image="images/purplesky.png"
         data-background-repeat="repeat"
@@ -236,13 +458,19 @@
           </p>
         </div>
       </section>
+    <!--LANGUAGE SERVICES-->
+    <section
+    data-background-image="images/purplesky.png"
+    data-background-repeat="repeat"
+    data-background-size="20%"
+  >
       <section
         data-background-image="images/purplesky.png"
         data-background-repeat="repeat"
         data-background-size="20%"
       >
         <div class="content-banner">
-          <h3>Categorie di servizi : Language - Un esempio</h3>
+          <h2>Categorie di servizi : Language - Un esempio</h2>
           <p>
             <span style="font-weight: bold;">Immersive Reader :</span>
           </p>
@@ -256,6 +484,51 @@
             </ol>  
         </div>
       </section>
+
+           <section data-state="demo-analisi-comprensione-testo">   
+             <div class="content-banner">
+             <h2>DEMO: Analisi e comprensione di un testo</h2>
+             <div class="row">
+               <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+                 <div  class="row">
+                     <div  class="input-field col s12">
+                       <i class="material-icons prefix purple-text">mode_edit</i>
+                       <textarea style="font-size: 20px;" id="textarea_content" class="materialize-textarea"></textarea>
+                       <label for="textarea_content">Scrivi qualcosa</label>
+                     </div>
+                 </div>
+                 <div class="row">
+                   <div class="col s12">                   
+                     <a id="lnkLang" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">language</i>Lingua?</a>
+                   </div>
+                 </div>
+                <div class="row">
+                   <div class="col s12">
+                     <span id="legenda" style="display: none; font-size: 15px" class="purple-text">Score vicino a 1 sentimento positivo / 0 negativo / 0.5 assenza di sentimento </span>                   
+                     <a id="lnkLangSent" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">sentiment_satisfied_alt</i>Sentimento?</a>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col s12">
+                     <a id="lnkLangKeyPhrases" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">vpn_key</i>Parole Chiave?</a>
+                   </div>
+                 </div>
+               </form>
+               <div class="col s6">
+                   <pre style="border: 0; width: 100%; box-shadow: none;">
+                     <code id="text_anal_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                   </pre>  
+               </div>
+             </div>
+   
+           </section>
+         </section>
+       <!--SPEECH SERVICES-->
+       <section
+       data-background-image="images/purplesky.png"
+       data-background-repeat="repeat"
+       data-background-size="20%"
+     >
       <section
         data-background-image="images/purplesky.png"
         data-background-repeat="repeat"
@@ -268,7 +541,71 @@
           </p>
         </div>
       </section>
-      <section
+     
+      
+       <section data-state="demo-trascrizione-parlato">   
+         <div class="content-banner">
+         <h2>DEMO: Trascrizione del parlato</h2>
+         <div class="row">
+           <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+             <div  class="row">
+                 <div  class="input-field col s12">
+                   <a id="startRecording" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="red-text material-icons left">fiber_manual_record</i>Registra</a>    
+                   <a id="stopRecording" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="white-text material-icons left">stop</i>Stop</a>    
+                 </div>
+             </div>
+             <div  class="row">
+               <div  class="input-field col s12">
+                  <audio id="player" controls></audio>
+               </div>
+           </div>
+             <div class="row">
+               <div class="col s12">                   
+                 <a id="lnkTranscribe" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">text_format</i>Trascrivi</a>
+               </div>
+             </div>
+           
+           </form>
+           <div class="col s6">
+               <pre style="border: 0; width: 100%; box-shadow: none;">
+                 <code id="audio_text_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+               </pre>  
+           </div>
+         </div>
+       </section>
+       <section data-state="demo-sintesi-parlato">   
+         <div class="content-banner">
+         <h2>DEMO: Sintesi del parlato</h2>
+         <div class="row">
+           <form style="background-color: #f7d0ff;" class="col s12">
+             <div  class="row">
+                 <div  class="input-field col s6">
+                   <i class="material-icons prefix purple-text">mode_edit</i>
+                   <textarea style="font-size: 20px;" id="textarea_tospeak" class="materialize-textarea"></textarea>
+                   <label for="textarea_tospeak">Scrivi qualcosa</label>
+                 </div>
+                 <div class="col s6">                   
+                   <a id="lnkSintetizza" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">speaker</i>Pronuncia</a>
+                 </div>
+             </div>
+             <div  class="row">
+               <div  class="input-field col s12">
+                  <audio id="player_sintesi" ></audio>
+               </div>
+           </div>
+                
+           </form>       
+         </div>
+       </section>
+      </section>
+    
+        <!--DECISION SERVICES-->
+        <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+        <section
         data-background-image="images/purplesky.png"
         data-background-repeat="repeat"
         data-background-size="20%"
@@ -280,18 +617,126 @@
           </p>
         </div>
       </section>
-      <section
-        data-background-image="images/purplesky.png"
-        data-background-repeat="repeat"
-        data-background-size="20%"
-      >
-        <div class="content-banner">
-          <h2>Categorie di servizi : Search</h2>
-          <p>
-            Aggiungi le API di Ricerca Bing alle tue app e sfrutta la possibilità di setacciare miliardi di pagine Web, immagini, video e notizie con una singola chiamata API 
-          </p>
-        </div>
-      </section>
+            <section data-state="demo-moderazione-immagine">   
+              <div class="content-banner">
+              <h2>DEMO: Classificazione di un'immagine</h2>
+
+                <div class="row">
+                  <form style="background-color: #f7d0ff; height: 550px"  class="col s6">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="input_image_moderate_url" type="url" class="validate">
+                        <label for="input_image_moderate_url">Url Immagine</label>
+                        <span class="helper-text" data-error="Url non valida"></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <img id="img_preview_moderate" class="hide center-align" src="" style="height: 360px; border: 0; background-color: #ffffff;">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">                   
+                        <a id="lnkImgModerate" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col s6">
+                      <pre style="border: 0; width: 100%; box-shadow: none;">
+                        <code id="code_json_img_moderate" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                      
+                      </pre>  
+                  </div>
+                </div>
+                <aside class="notes">
+                    Url contenuti neutri: <a href="https://insolenzadir2d2.it/wp-content/uploads/2019/09/rise-of-skywalker-poster-tall.jpg">Skywalker</a> <br>
+                    Url contenuti moderati:  <a href="https://www.manduriaoggi.it/upload/marika-fruscio.jpg">Soft</a><br>
+                </aside>
+          </section>
+          <section data-state="demo-conteggio-volti">   
+            <div class="content-banner">
+            <h2>DEMO: Conteggio volti </h2>
+
+            <div class="row">
+              <form class="col s6">
+             
+                <div class="row">
+                  <div class="center-align col s12">                   
+                    <video autoplay="true" id="video_preview_faces_camera" class="center-align"  ></video>
+                   
+                  </div>
+                </div>
+               
+              </form>
+              <div class="col s6">
+                  <canvas style="width: 640; height: 480;" class="white card-content" id="preview_faces_canvas"  width="640px" height="480px"></canvas>  
+              </div>
+            </div>
+              <div class="row">
+                <div class="col s4 input-field">
+                  <a id="lnkFacesSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
+                  <a id="lnkFacesAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
+                </div>
+               <div class="col s8" >
+                 <p id="text-faces-detected" class="white-text center-align blue lighten-1" >
+
+                 </p>
+               </div>
+              </div>
+              
+        </section>
+
+        </section>
+     
+       <!--SEARCH SERVICES-->
+       <section
+       data-background-image="images/purplesky.png"
+       data-background-repeat="repeat"
+       data-background-size="20%"
+     >
+          <section
+          data-background-image="images/purplesky.png"
+          data-background-repeat="repeat"
+          data-background-size="20%"
+        >
+          <div class="content-banner">
+            <h2>Categorie di servizi : Search</h2>
+            <p>
+              Aggiungi le API di Ricerca Bing alle tue app e sfrutta la possibilità di setacciare miliardi di pagine Web, immagini, video e notizie con una singola chiamata API 
+            </p>
+          </div>
+        </section>
+        
+         <section data-state="demo-suggerimenti-ricerca">   
+           <div class="content-banner">
+           <h2>DEMO: Suggerimenti per una ricerca</h2>
+             <div class="row">
+               <form style="background-color: #f7d0ff; height: 550px" class="col s6">
+                 <div  class="row">
+                   <div class="input-field col s6">
+                     <i class="material-icons prefix purple-text">textsms</i>
+                     <input type="text" id="autocomplete-input" class="autocomplete">
+                     <label for="autocomplete-input">Autocomplete</label>
+                   </div>
+                 </div> 
+                 <div class="row">
+                   <div class="input-field col s12">
+                     <ul id="search_results" style="width:70%; font-size: 20px;" class="blue-text collection with-header">
+ 
+                     </ul>
+                   </div>
+                 </div>       
+               </form>
+               <div class="col s6">
+                   <pre style="border: 0; width: 100%; box-shadow: none;">
+                     <code id="text_autocomplete_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
+                   </pre>  
+               </div>
+             </div>
+            
+         </section>
+
+     </section>
+    
         <!--CASI D'USO-->
         <section
         data-background-image="images/purplesky.png"
@@ -430,513 +875,8 @@
             </div>
           </div>
         </section>
-         <!--SETUP PRELIMINARE-->
-         <section
-         data-background-image="images/purplesky.png"
-         data-background-repeat="repeat"
-         data-background-size="20%"
-       >
-        <section>
-          <div class="content-banner">
-            <h2>Setup e Definizioni Preliminari</h2>
-            <p class="fragment">
-              Il numero dei Cognitive Service offerti continua ad aumentare.<br>
-              <span class="fragment shout">Perdersi diventa molto facile!</span>
-            </p>
-            <p class="fragment">
-              Diamo alcune definizioni:
-              <ul>
-                <li class="fragment"><em class="green-text">Servizio:</em> un raggruppamento logico di funzionalit&agrave; affini. Si compone di <em>API</em></li>
-                <li class="fragment"><em class="green-text">API:</em> un insieme di risorse remote (nel senso REST del termine) che possiamo chiamare <em>Endpoint</em></li>
-                <li class="fragment"><em class="green-text">Endpoint:</em> singole risorse cui possiamo accedere mediante API REST</li>
-              </ul>
-            </p>
-            <p class="fragment">
-               <a target="_blank" href="https://docs.microsoft.com/en-us/azure/cognitive-services/">Link Servizi</a>
-            </p>
-            <p class="fragment">
-              <a target="_blank" href="https://westeurope.dev.cognitive.microsoft.com/docs/services">Link Endpoint</a>
-           </p>
-            
-          </div>
-        </section>
-  
-       </section>
-        <!--VISION SERVICES-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-          data-state="analyze_image_demo"
-        >
-        <section>
-        <div class="content-banner">
-          <h2>Vision Service</h2>
-          <p class="fragment">
-            Comprende un set di API che consentono l'elaborazione avanzata di immagini e l'estrazioni di metadati ed informazioni
-            dalle stesse.
-          </p>
-          <p class="fragment">
-            Ad esempio permettono di:
-            <ol style="font-size: 30px;">
-              <li class="fragment">Riconoscere oggetti contenuti in immagini.</li>
-              <li class="fragment">Estrarre blocchi di testo da immagini.</li>
-              <li class="fragment">Rilevare volti in un immagine.</li>
-              <li class="fragment">Classificare/taggare un immagine in base al contenuto in modo automatico.</li>
-            </ol>
-          </p>
-        </section>
-        <section data-state="demo-analisi-immagine">   
-            <div class="content-banner" style="height: 920px">
-            <h2>DEMO: Analisi di un'immagine</h2>
-           
-            <div class="row">
-              <div class="col tabheader s12">
-                <ul id="demo-analisi" class="tabs blue-text">
-                  <li class="tab col s6"><a class="active" href="#div-url">Analisi da Url</a></li>
-                  <li class="tab col s6"><a href="#div-camera">Analisi da Webcam</a></li>
-                </ul>
-              </div>
-              <div id="div-url" class="col tabcontent s12">
-                <div class="row">
-                  <form class="col s6">
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="input_image_url" type="url" class="validate">
-                        <label for="input_image_url">Url Immagine</label>
-                        <span class="helper-text" data-error="Url non valida"></span>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <img id="img_preview" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <a id="lnkAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                      </div>
-                    </div>
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
-                      
-                      </pre>  
-                  </div>
-                </div>
 
-              </div>
-              <div id="div-camera" class="col tabcontent s12">
-                <div class="row">
-                  <form class="col s6">
-                    <div class="row">
-                      <div class="col s6 input-field">
-                        <a id="lnkSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
-                        <a id="lnkAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                      </div>
-                     
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <!--<img id="img_preview_camera" class="hide center-align" src="" style=" width: 100%; height: 400px; border: 0; background-color: #ffffff;">-->
-                        <video autoplay="true" id="video_preview_camera" class="center-align"  ></video>
-                        <canvas id="preview_canvas" width="640px" height="480px"></canvas>
-                      </div>
-                    </div>
-                   
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="code_json_camera" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>
-                      
-                      </pre>  
-                  </div>
-                </div>
-
-              </div>
-            </div>
-       </section>
-       <section data-state="demo-estrazione-testo">   
-        <div class="content-banner" style="height: 920px">
-        <h2>DEMO: Estrazione Testo</h2>
-       
-        <div class="row">
-          <div class="col tabheader s12">
-            <ul id="demo-text" class="tabs">
-              <li class="tab col s6"><a class="active" href="#div-text-url">Analisi da Url</a></li>
-              <li class="tab col s6"><a href="#div-text-camera">Analisi da Webcam</a></li>
-            </ul>
-          </div>
-          <div id="div-text-url" class="col tabcontent s12">
-            <div class="row">
-              <form class="col s6">
-                <div class="row">
-                  <div class="input-field col s10">
-                    <input id="input_text_url" type="url" class="validate">
-                    <label for="input_text_url">Url Immagine</label>
-                    <span class="helper-text" data-error="Url non valida"></span>
-                  </div>
-                  <div class="input-field col s2">                   
-                    <a id="lnkTextAnalyze" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i></a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">                   
-                    <img id="img_text_preview"   style="visibility:hidden;  height: 400px; border: 0; background-color: #ffffff;">
-                  </div>
-                </div>
-                
-              </form>
-              <div class="col s6">
-                <div class="card  white" >
-                  <div id="extracted_text" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
-                  </div> 
-                </div>
-              </div>
-          </div>
-        </div>
-  
-          <div id="div-text-camera" class="col tabcontent s12">
-            <div class="row">
-              <form class="col s6">
-                <div class="row">
-                  <div class="center-align col s12 input-field">
-                    <a id="lnkTextSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
-                    <a id="lnkTextAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                  </div>
-                 
-                </div>
-                <div class="row">
-                  <div class="center-align col s12">                   
-                    <video autoplay="true" id="video_preview_text_camera" class="center-align"  ></video>
-                    <canvas id="preview_text_canvas" style="display: none;" width="640px" height="480px"></canvas>
-                  </div>
-                </div>
-               
-              </form>
-              <div class="col s6">
-                <div class="card  white" >
-                  <div id="extracted_text_camera" style=" height: 550px; overflow: scroll;" class=" purple-text card-content" >         
-                  </div>                
-              </div>
-            </div>
-
-          </div>
-        </div>
-        </div>
-      </section>
-     </section>
-       
-        <!--LANGUAGE SERVICES-->
-      <section
-        data-background-image="images/purplesky.png"
-        data-background-repeat="repeat"
-        data-background-size="20%"
-      >
-      <section>
-          <div class="content-banner">
-            <h2>Language Services</h2>
-            <p class="fragment">
-              Comprende un set di API che consentone l'elaborazione del linguaggio naturale al fine di interpretare sentimenti ed
-              intenti dell'utente.
-            </p>
-            <p class="fragment">
-              Ad esempio permettono di:
-              <ol style="font-size: 30px;">
-                <li class="fragment">Traduzione ed analisi di testo (Text Analytics)</li>
-                <li class="fragment">Conversazione Bot Style (LUIS)</li>
-              </ol>
-            </p>
-          </div>
-        </section>
-        <section data-state="demo-analisi-comprensione-testo">   
-          <div class="content-banner">
-          <h2>DEMO: Analisi e comprensione di un testo</h2>
-          <div class="row">
-            <form style="background-color: #f7d0ff; height: 550px" class="col s6">
-              <div  class="row">
-                  <div  class="input-field col s12">
-                    <i class="material-icons prefix purple-text">mode_edit</i>
-                    <textarea style="font-size: 20px;" id="textarea_content" class="materialize-textarea"></textarea>
-                    <label for="textarea_content">Scrivi qualcosa</label>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col s12">                   
-                  <a id="lnkLang" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">language</i>Lingua?</a>
-                </div>
-              </div>
-             <div class="row">
-                <div class="col s12">
-                  <span id="legenda" style="display: none; font-size: 15px" class="purple-text">Score vicino a 1 sentimento positivo / 0 negativo / 0.5 assenza di sentimento </span>                   
-                  <a id="lnkLangSent" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">sentiment_satisfied_alt</i>Sentimento?</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12">
-                  <a id="lnkLangKeyPhrases" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">vpn_key</i>Parole Chiave?</a>
-                </div>
-              </div>
-            </form>
-            <div class="col s6">
-                <pre style="border: 0; width: 100%; box-shadow: none;">
-                  <code id="text_anal_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
-                </pre>  
-            </div>
-          </div>
-
-        </section>
-      </section>
-
-        <!--SPEECH SERVICES-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-        >
-        <section>
-          <div class="content-banner">
-            <h2>Speech Services</h2>
-            <p class="fragment">
-              Set di API che consentono la conversione del parlato in testo e di stringhe di testo in parlato
-              "naturale".
-            </p>
-            <p class="fragment">
-              Traduzione del parlato in altre lingue e riconoscimento del soggetto parlante.
-            </p>
-            <p class="fragment">
-              Ad esempio:
-              <ol style="font-size: 30px;">
-                <li class="fragment">Trascrivere una conversazione</li>
-                <li class="fragment">Traduzione simultanea</li>
-                <li class="fragment">Identificazione del parlante</li>
-                <li class="fragment">Analisi del parlato e riconoscimento di intenti</li>
-              </ol>
-            </p>  
-          </div>
-        </section>
-        <section data-state="demo-trascrizione-parlato">   
-          <div class="content-banner">
-          <h2>DEMO: Trascrizione del parlato</h2>
-          <div class="row">
-            <form style="background-color: #f7d0ff; height: 550px" class="col s6">
-              <div  class="row">
-                  <div  class="input-field col s12">
-                    <a id="startRecording" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="red-text material-icons left">fiber_manual_record</i>Registra</a>    
-                    <a id="stopRecording" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="white-text material-icons left">stop</i>Stop</a>    
-                  </div>
-              </div>
-              <div  class="row">
-                <div  class="input-field col s12">
-                   <audio id="player" controls></audio>
-                </div>
-            </div>
-              <div class="row">
-                <div class="col s12">                   
-                  <a id="lnkTranscribe" class="hide purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">text_format</i>Trascrivi</a>
-                </div>
-              </div>
-            
-            </form>
-            <div class="col s6">
-                <pre style="border: 0; width: 100%; box-shadow: none;">
-                  <code id="audio_text_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
-                </pre>  
-            </div>
-          </div>
-        </section>
-        <section data-state="demo-sintesi-parlato">   
-          <div class="content-banner">
-          <h2>DEMO: Sintesi del parlato</h2>
-          <div class="row">
-            <form style="background-color: #f7d0ff;" class="col s12">
-              <div  class="row">
-                  <div  class="input-field col s6">
-                    <i class="material-icons prefix purple-text">mode_edit</i>
-                    <textarea style="font-size: 20px;" id="textarea_tospeak" class="materialize-textarea"></textarea>
-                    <label for="textarea_tospeak">Scrivi qualcosa</label>
-                  </div>
-                  <div class="col s6">                   
-                    <a id="lnkSintetizza" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">speaker</i>Pronuncia</a>
-                  </div>
-              </div>
-              <div  class="row">
-                <div  class="input-field col s12">
-                   <audio id="player_sintesi" ></audio>
-                </div>
-            </div>
-                 
-            </form>       
-          </div>
-        </section>
-        </section>
-        <!--DECISION SERVICES-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-        >
-        <section>
-          <div class="content-banner">
-            <h2>Decision Services</h2>
-            <p class="fragment">
-              Set di API che forniscono raccomandazioni e suggerimenti o che aiutano in procedure di classificazione automatica.
-            </p>
-            <p class="fragment">
-              Ad esempio:
-              <ol style="font-size: 30px;">
-                <li class="fragment">Rilevare anomalie in set di dati, sulla base del pregresso</li>
-                <li class="fragment">Tagging automatico di contenuti testuali, audio e video per rilevare contenuti offensivi, pericolosi o non desiderati</li>
-                <li class="fragment">Suggerimento di contenuti da presentare ad un cliente sulla base dei suoi gusti ("potrebbe piacerti anche questo...") </li>
-              </ol>
-            </p>  
-            </section>
-            <section data-state="demo-moderazione-testo">   
-              <div class="content-banner">
-              <h2>DEMO: Classificazione di un testo</h2>
-                <div class="row">
-                  <form style="background-color: #f7d0ff; height: 550px" class="col s6">
-                    <div  class="row">
-                        <div  class="input-field col s12">
-                          <i class="material-icons prefix purple-text">mode_edit</i>
-                          <textarea style="font-size: 20px;" id="textarea_content_moderate" class="materialize-textarea"></textarea>
-                          <label for="textarea_content_moderate">Scrivi qualcosa</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <a id="lnkModerate" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">language</i>Analizza</a>
-                      </div>
-                    </div>             
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="text_moderate_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
-                      </pre>  
-                  </div>
-            </section>
-            <section data-state="demo-moderazione-immagine">   
-              <div class="content-banner">
-              <h2>DEMO: Classificazione di un'immagine</h2>
-
-                <div class="row">
-                  <form style="background-color: #f7d0ff; height: 550px"  class="col s6">
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="input_image_moderate_url" type="url" class="validate">
-                        <label for="input_image_moderate_url">Url Immagine</label>
-                        <span class="helper-text" data-error="Url non valida"></span>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <img id="img_preview_moderate" class="hide center-align" src="" style="height: 360px; border: 0; background-color: #ffffff;">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col s12">                   
-                        <a id="lnkImgModerate" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                      </div>
-                    </div>
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="code_json_img_moderate" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                      
-                      </pre>  
-                  </div>
-                </div>
-                <aside class="notes">
-                    Url contenuti neutri: <a href="https://insolenzadir2d2.it/wp-content/uploads/2019/09/rise-of-skywalker-poster-tall.jpg">Skywalker</a> <br>
-                    Url contenuti moderati:  <a href="https://www.manduriaoggi.it/upload/marika-fruscio.jpg">Soft</a><br>
-                </aside>
-          </section>
-          <section data-state="demo-conteggio-volti">   
-            <div class="content-banner">
-            <h2>DEMO: Conteggio volti </h2>
-
-            <div class="row">
-              <form class="col s6">
-             
-                <div class="row">
-                  <div class="center-align col s12">                   
-                    <video autoplay="true" id="video_preview_faces_camera" class="center-align"  ></video>
-                   
-                  </div>
-                </div>
-               
-              </form>
-              <div class="col s6">
-                  <canvas style="width: 640; height: 480;" class="white card-content" id="preview_faces_canvas"  width="640px" height="480px"></canvas>  
-              </div>
-            </div>
-              <div class="row">
-                <div class="col s4 input-field">
-                  <a id="lnkFacesSnapshot_camera" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">photo_camera</i>Scatta</a>
-                  <a id="lnkFacesAnalyze_camera" style="display: none;" class="purple darken-2 white-text waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Analizza</a>
-                </div>
-               <div class="col s8" >
-                 <p id="text-faces-detected" class="white-text center-align blue lighten-1" >
-
-                 </p>
-               </div>
-              </div>
-              
-        </section>
-
-        </section>
-        <!--SEARCH SERVICES-->
-        <section
-          data-background-image="images/purplesky.png"
-          data-background-repeat="repeat"
-          data-background-size="20%"
-        >
-        <section>
-          <div class="content-banner">
-            <h2>Search Services</h2>
-            <p class="fragment">
-              Set di API che consentono l'utilizzo delle funzionalit&agrave; di ricerca avanzata di Bing 
-              nelle proprie applicazioni.
-            </p>
-            <p class="fragment">
-              Ad esempio:
-              <ol style="font-size: 30px;">
-                <li class="fragment">Suggerire termine per autocompletare input dell'utente</li>
-                <li class="fragment">Suggerire video o immagini sulla base di query inserite dall'utente</li>
-                <li class="fragment">Suggerimento di notizie o correzione ortografica </li>
-              </ol>
-            </p>  
-            </section>
-            <section data-state="demo-suggerimenti-ricerca">   
-              <div class="content-banner">
-              <h2>DEMO: Suggerimenti per una ricerca</h2>
-                <div class="row">
-                  <form style="background-color: #f7d0ff; height: 550px" class="col s6">
-                    <div  class="row">
-                      <div class="input-field col s6">
-                        <i class="material-icons prefix purple-text">textsms</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">Autocomplete</label>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <ul id="search_results" style="width:70%; font-size: 20px;" class="blue-text collection with-header">
-    
-                        </ul>
-                      </div>
-                    </div>       
-                  </form>
-                  <div class="col s6">
-                      <pre style="border: 0; width: 100%; box-shadow: none;">
-                        <code id="text_autocomplete_code_json" style="height: 500px; max-height: 500px;" class="javascript" data-trim data-noescape></code>                    
-                      </pre>  
-                  </div>
-                </div>
-               
-            </section>
-
-        </section>
+      
         <!--LINK UTILI-->
         <section
         data-background-image="images/purplesky.png"
