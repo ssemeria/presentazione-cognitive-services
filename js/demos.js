@@ -54,9 +54,11 @@ function initDemoAnalisiImmagine() {
     $('#lnkSnapshot_camera').on('click', function() {
       var cameraHelper = new CameraHelper();
       var video = $('#video_preview_camera')[0];
+      $('#preview_canvas').show();
       var canvas = $('#preview_canvas')[0];
       cameraHelper.takeSnaphotToCanvas(canvas, video);
       $('#video_preview_camera').hide();
+
       $('#lnkAnalyze_camera').show();
       $('#lnkSnapshot_camera').hide();
 
@@ -88,6 +90,7 @@ function initDemoAnalisiImmagine() {
     //init tabs
     $('.tabs').tabs({ onShow: function(tab) {
        if (tab.id === 'div-camera'){
+        $('#preview_canvas').hide();
         var canvas = $('#preview_canvas')[0];
         const context = canvas.getContext('2d');  
         context.clearRect(0, 0, canvas.width, canvas.height);

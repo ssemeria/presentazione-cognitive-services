@@ -4,8 +4,7 @@ class CameraHelper {
 
     streamToVideoElement(videoElement) {
         const constraints = {
-          video: true
-
+          video: { deviceId: 'ab80dec2df05fb8848cc2d1d266470fa2397f024522cb2cab14082ed7c8fe466' }
         };
       
         navigator.mediaDevices.getUserMedia(constraints)
