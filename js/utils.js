@@ -2,20 +2,18 @@ class CameraHelper {
 
     constructor() {}
 
-    enumerateCameras(gotDevices) {
-        navigator.mediaDevices.enumerateDevices().then(gotDevices);
-    }
+
 
     streamToVideoElement(videoElement) {
-        const constraints = {
-          video: { deviceLabel: "" }
-        };
-      
-        navigator.mediaDevices.getUserMedia(constraints)
-          .then(function(stream) {
-            videoElement.srcObject = stream;
-          });
-
+        navigator.mediaDevices.enumerateDevices().then(function(devices) {
+            const preferredDev = devices.find(dev => dev.label.indexOf("HD 720P Webcam") >= 0 && dev.kind == "videoinput" );
+            const constraints = (preferredDev)? {video: { deviceId: preferredDev.deviceId }} : {video: true};
+        
+            navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(stream) {
+                videoElement.srcObject = stream;
+            });
+            });
     }
 
     takeSnaphotToCanvas(canvas, video) {
