@@ -2,9 +2,13 @@ class CameraHelper {
 
     constructor() {}
 
+    enumerateCameras(gotDevices) {
+        navigator.mediaDevices.enumerateDevices().then(gotDevices);
+    }
+
     streamToVideoElement(videoElement) {
         const constraints = {
-          video: { deviceId: 'ab80dec2df05fb8848cc2d1d266470fa2397f024522cb2cab14082ed7c8fe466' }
+          video: { deviceLabel: "" }
         };
       
         navigator.mediaDevices.getUserMedia(constraints)
